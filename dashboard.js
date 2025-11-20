@@ -4,7 +4,7 @@
 let stepCount = 0;
 let lastAcc = 0;
 let lastStepTime = 0;
-const STEP_THRESHOLD = 15; // adjust this experimentally
+const STEP_THRESHOLD = 12; // adjust this experimentally
 const STEP_COOLDOWN = 300; // ms
 
 function startStepCounter(simulated = false) {
