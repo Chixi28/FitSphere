@@ -90,21 +90,23 @@ function startStepCounter(simulated = false) {
 // =====================
 function startLocation() {
     if (!navigator.geolocation) {
-        coordsEl.textContent = "Geolocation not supported.";
-        labelEl.textContent = "-";
+        document.getElementById("locationCoords").textContent = "Geolocation not supported.";
+        document.getElementById("locationLabel").textContent = "-";
         return;
     }
 
-    navigator.geolocation.getCurrentPosition(
+    // Use watchPosition to continuously update location
+    navigator.geolocation.watchPosition(
         (position) => {
             const { latitude, longitude } = position.coords;
-            coordsEl.textContent = `${latitude.toFixed(5)}°, ${longitude.toFixed(5)}°`;
-            labelEl.textContent = "Your Location";
+            document.getElementById("locationCoords").textContent =
+                `${latitude.toFixed(5)}°, ${longitude.toFixed(5)}°`;
+            document.getElementById("locationLabel").textContent = "Your Location";
         },
         (error) => {
             console.error(error);
-            coordsEl.textContent = "Location access denied.";
-            labelEl.textContent = "-";
+            document.getElementById("locationCoords").textContent = "Location access denied.";
+            document.getElementById("locationLabel").textContent = "-";
         },
         {
             enableHighAccuracy: true,
