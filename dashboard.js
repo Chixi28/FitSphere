@@ -1,24 +1,36 @@
 // =====================
 // ACCELEROMETER FUNCTION
 // =====================
-function startAccelerometer() {
-    console.log("Accelerometer started!");
+function startAccelerometer(simulated = false) {
+    console.log("Accelerometer started!", simulated ? "(simulated)" : "");
 
     const btn = document.getElementById("enableMotion");
     btn.disabled = true;
-    btn.textContent = "Accelerometer Enabled";
+    btn.textContent = simulated ? "Simulated Accelerometer Enabled" : "Accelerometer Enabled";
 
-    // Listen to motion events
+    if (simulated) {
+        // Update simulated values every 100ms
+        setInterval(() => {
+            const x = (Math.random() * 2 - 1).toFixed(3);
+            const y = (Math.random() * 2 - 1).toFixed(3);
+            const z = (Math.random() * 2 - 1).toFixed(3);
+            document.getElementById("accX").textContent = x;
+            document.getElementById("accY").textContent = y;
+            document.getElementById("accZ").textContent = z;
+            console.log("Simulated:", x, y, z);
+        }, 100);
+        return;
+    }
+
+    // Listen to real motion events
     window.addEventListener("devicemotion", (event) => {
         const acc = event.accelerationIncludingGravity;
         if (!acc) return;
 
-        // Display values rounded to 3 decimals
         document.getElementById("accX").textContent = acc.x?.toFixed(3) ?? 0;
         document.getElementById("accY").textContent = acc.y?.toFixed(3) ?? 0;
         document.getElementById("accZ").textContent = acc.z?.toFixed(3) ?? 0;
 
-        // Debug log
         console.log("Motion event:", acc.x, acc.y, acc.z);
     });
 }
@@ -34,11 +46,8 @@ document.getElementById("enableMotion").addEventListener("click", async () => {
         typeof DeviceMotionEvent.requestPermission === "function") {
         try {
             const response = await DeviceMotionEvent.requestPermission();
-            if (response === "granted") {
-                startAccelerometer();
-            } else {
-                alert("Permission denied. Cannot access motion sensors.");
-            }
+            if (response === "granted") startAccelerometer();
+            else alert("Permission denied. Cannot access motion sensors.");
             return;
         } catch (err) {
             alert("Error requesting motion permission.");
@@ -53,8 +62,7 @@ document.getElementById("enableMotion").addEventListener("click", async () => {
         return;
     }
 
-    // Unsupported device
-    alert("Your device or browser does not support the DeviceMotion API.");
-    btn.disabled = true;
-    btn.textContent = "Motion Not Supported";
+    // Desktop / unsupported → use simulated values
+    alert("No motion sensors detected. Using simulated values for testing.");
+    startAccelerometer(true);
 });
