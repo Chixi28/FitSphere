@@ -4,7 +4,7 @@
 let stepCount = 0;
 let lastAcc = 0;
 let lastStepTime = 0;
-const STEP_THRESHOLD = 12; // adjust experimentally
+const STEP_THRESHOLD = 12; // Adjust experimentally
 const STEP_COOLDOWN = 300; // ms
 
 function startStepCounter(simulated = false) {
@@ -41,6 +41,9 @@ function startStepCounter(simulated = false) {
         }
 
         lastAcc = totalAcc;
+
+        // Optional debug log
+        // console.log("Motion event:", acc.x, acc.y, acc.z, "total:", totalAcc.toFixed(2), "steps:", stepCount);
     });
 }
 
@@ -65,12 +68,15 @@ function startCompass(simulated = false) {
         return;
     }
 
+    // Real device orientation
     window.addEventListener("deviceorientation", (event) => {
         let alpha = event.alpha; // 0–360 degrees
         if (alpha === null) return;
 
+        // Rotate needle
         needle.style.transform = `rotate(${alpha}deg)`;
         degreeEl.textContent = `${Math.round(alpha)}°`;
+
         const dirIndex = Math.round(alpha / 45) % 8;
         directionEl.textContent = directions[dirIndex];
     });
@@ -82,7 +88,7 @@ function startCompass(simulated = false) {
 document.getElementById("enableMotion").addEventListener("click", async () => {
     const btn = document.getElementById("enableMotion");
 
-    // iOS permission request
+    // iOS: request permission
     if (typeof DeviceMotionEvent !== "undefined" &&
         typeof DeviceMotionEvent.requestPermission === "function") {
         try {
