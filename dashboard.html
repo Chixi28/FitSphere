@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitSphere</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    
+    <!-- HEADER -->
+    <header class="app-header py-4">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <div class="header-brand text-white fs-1 mb-0">FitSphere</div>
+            <nav class="d-flex gap-4">
+                <a href="#" class="btn btn-brand-primary nav-link">DASHBOARD</a>
+                <a href="#" class="btn btn-brand-secondary nav-link">ABOUT</a>
+                <a href="#" class="btn btn-brand-tertiary nav-link">SETTINGS</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <div class="hero-title-container">
+        <p class="hero-banner-main text-center fw-bolder">MOTION DASHBOARD</p>
+        <p class="hero-banner-secondary text-center fw-bolder">TRACK YOUR STEPS, DIRECTION, AND LOCATION IN REAL TIME</p>
+    </div>
+
+    <!-- MAIN DASHBOARD -->
+    <div class="hero-main-container mt-3">
+        <div class="hero-main-grid">
+            <!-- STEPS -->
+            <!-- <div class="dashboard-box">
+                <div class="box-title">STEPS</div>
+                <div class="steps-count">0</div>
+                <div class="steps-label">TOTAL STEPS</div>
+            </div> -->
+            <div class="dashboard-box">
+                <div class="box-title">ACCELERATION</div>
+                <div class="axis-value">X: <span id="accX">0</span></div>
+                <div class="axis-value">Y: <span id="accY">0</span></div>
+                <div class="axis-value">Z: <span id="accZ">0</span></div>
+            </div>
+
+            <!-- LIVE COMPASS -->
+            <div class="dashboard-box">
+                <div class="box-title">LIVE COMPASS</div>
+                <div class="compass-container">
+                    <div class="compass-circle">
+                        <div class="compass-needle"></div>
+                        <div class="compass-direction">NE</div>
+                    </div>
+                    <div class="compass-degree">45°</div>
+                </div>
+            </div>
+
+            <!-- LAT/LON -->
+            <div class="dashboard-box">
+                <div class="box-title">LAT/LON</div>
+                <div class="location-container">
+                    <div class="location-coords">40.7128° N, 74.0060° W</div>
+                    <div class="location-label">NEW YORK, NY</div>
+                </div>
+            </div>
+
+            <!-- GRAPH -->
+            <div class="dashboard-box">
+                <div class="box-title">GRAPH</div>
+                <div class="graph-container">
+                    <div class="graph-placeholder">ACTIVITY CHART</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-main-running-man">
+            RUNNING MAN
+        </div>
+    </div>
+
+    <!-- BUTTON TO ENABLE MOTION SENSOR -->
+    <div class="text-center my-4">
+        <button id="enableMotion" class="btn btn-primary">Enable Step Counter</button>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="app-footer py-4">
+        <div class="container-fluid d-flex align-items-center justify-content-between">
+            <div class="footer-slogan text-white mb-0">MOVE SMARTER. LIVE BETTER</div>
+            <nav class="d-flex gap-4">
+                <a href="#" class="nav-link text-white">DASHBOARD</a>
+                <a href="#" class="nav-link text-white">ABOUT</a>
+                <a href="#" class="nav-link text-white">SETTINGS</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- JS -->
+    <script src="./dashboard.js"></script>
+</body>
+</html>

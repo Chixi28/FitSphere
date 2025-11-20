@@ -1,0 +1,143 @@
+/* --- GLOBAL STYLES --- */
+/* Apply Bebas Neue to all button-like links for consistency */
+.btn-brand-primary,
+.btn-brand-secondary,
+.btn-brand-tertiary,
+.footer-slogan,
+.header-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+}
+
+/* --- HEADER STYLES --- */
+
+.app-header {
+    background-color: #2596BE;
+}
+
+.header-brand {
+    font-size: 3rem;
+    /* BEST PRACTICE FIX:
+      REMOVED "margin-right: 60%;". This is now handled by
+      "justify-content-between" in the HTML.
+    */
+}
+
+/* Base button styles for the navigation links */
+.btn-brand-primary,
+.btn-brand-secondary,
+.btn-brand-tertiary {
+    font-size: 2rem;
+    color: white !important;
+    background-color: transparent; 
+    border: 2px solid transparent;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+/* --- BUTTON HOVER STYLES --- */
+
+.btn-brand-primary:hover {
+    background-color: #2085A7;
+    border-color: #2085A7;
+    color: white !important; 
+}
+
+.btn-brand-secondary:hover {
+    background-color: transparent;
+    border-color: white;
+    color: white !important; 
+}
+
+.btn-brand-tertiary:hover {
+    background-color: #197893; 
+    border-color: #197893;
+    color: white !important; 
+}
+
+/* --- HERO BACKGROUND STYLES --- */
+
+/* BEST PRACTICE FIX (DRY PRINCIPLE):
+  Combined ".hero-section" and ".hero-section-two" into one
+  reusable ".hero-banner" class with all the common properties.
+*/
+.hero-banner {
+    width: 100%;
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* These "modifier" classes now ONLY set the specific background image.
+*/
+.hero-banner-main {
+    background-image: url('./images/Marathon-racing.JPG');
+}
+
+.hero-banner-secondary {
+    background-image: url('./images/couple-jogging.JPG');
+}
+
+
+/* BEST PRACTICE FIX (SEMANTICS):
+  Renamed ".hero-title-one" to ".hero-title" to match the new <h1>.
+*/
+.hero-title {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+/* BEST PRACTICE FIX (DRY PRINCIPLE):
+  DELETED ".hero-title-two" because it was identical to ".hero-title-one".
+*/
+
+.hero-subtitle {
+    font-size: 1.5rem;
+}
+
+.hero-actions a {
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+}
+
+.hero-banner-secondary p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* BEST PRACTICE FIX:
+  REMOVED ".hero-section-two p" styles. This is now handled by
+  the "fs-6" utility class in the HTML.
+*/
+
+/* --- FOOTER STYLES --- */
+
+.app-footer {
+    background-color: black;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.footer-slogan {
+    font-size: 2rem;
+    /* BEST PRACTICE FIX:
+      REMOVED "margin-right: 51.25%;". This is now handled by
+      "justify-content-between" in the HTML.
+    */
+}
+
+.app-footer nav a {
+    font-size: 2rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.app-footer nav a:hover {
+    color: #2596BE !important;
+}
+
+/* BEST PRACTICE FIX:
+  REMOVED the global "nav { gap: 30%; }". This is fragile and
+  is now handled by "gap-4" utility classes in the HTML.
+*/

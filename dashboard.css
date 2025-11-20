@@ -1,0 +1,253 @@
+/* --- GLOBAL STYLES --- */
+/* Apply Bebas Neue to all button-like links for consistency */
+.btn-brand-primary,
+.btn-brand-secondary,
+.btn-brand-tertiary,
+.footer-slogan,
+.header-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+}
+
+/* --- HEADER STYLES --- */
+
+.app-header {
+    background-color: #2596BE;
+}
+
+.header-brand {
+    font-size: 3rem;
+    /* BEST PRACTICE FIX:
+      REMOVED "margin-right: 60%;". This is now handled by
+      "justify-content-between" in the HTML.
+    */
+}
+
+/* Base button styles for the navigation links */
+.btn-brand-primary,
+.btn-brand-secondary,
+.btn-brand-tertiary {
+    font-size: 2rem;
+    color: white !important;
+    background-color: transparent; 
+    border: 2px solid transparent;
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+/* --- BUTTON HOVER STYLES --- */
+
+.btn-brand-primary:hover {
+    background-color: #2085A7;
+    border-color: #2085A7;
+    color: white !important; 
+}
+
+.btn-brand-secondary:hover {
+    background-color: transparent;
+    border-color: white;
+    color: white !important; 
+}
+
+.btn-brand-tertiary:hover {
+    background-color: #197893; 
+    border-color: #197893;
+    color: white !important; 
+}
+/* --- HERO STYLES --- */
+        .hero-title-container {
+            font-family: 'Bebas Neue', sans-serif;
+            background-color: #e9ecef;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
+
+        .hero-banner-main {
+            font-size: 4rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-banner-secondary {
+            font-size: 1.5rem;
+            color: #666;
+        }
+
+        /* --- MAIN CONTENT STYLES --- */
+        .hero-main-container {
+            position: relative;
+            padding: 0 2rem;
+            flex: 1;
+        }
+
+        .hero-main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-box {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .box-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: #2596BE;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Steps Box */
+        .steps-count {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #2596BE;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .steps-label {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* Compass Box */
+        .compass-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .compass-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 3px solid #2596BE;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .compass-needle {
+            width: 4px;
+            height: 80px;
+            background-color: #e74c3c;
+            position: absolute;
+            top: 10px;
+            transform-origin: bottom center;
+            transform: rotate(45deg);
+        }
+
+        .compass-direction {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .compass-degree {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2596BE;
+            margin-top: 0.5rem;
+        }
+
+        /* Location Box */
+        .location-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .location-coords {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .location-label {
+            font-size: 1.5rem;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Graph Box */
+        .graph-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .graph-placeholder {
+            flex: 1;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 1.2rem;
+        }
+
+        /* Running Man Illustration */
+        .hero-main-running-man {
+            position: absolute;
+            bottom: 0;
+            right: 2rem;
+            width: 200px;
+            height: 200px;
+            background-color: #2596BE;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+/* --- FOOTER STYLES --- */
+
+.app-footer {
+    background-color: black;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.footer-slogan {
+    font-size: 2rem;
+    /* BEST PRACTICE FIX:
+      REMOVED "margin-right: 51.25%;". This is now handled by
+      "justify-content-between" in the HTML.
+    */
+}
+
+.app-footer nav a {
+    font-size: 2rem;
+    transition: color 0.2s ease-in-out;
+}
+
+.app-footer nav a:hover {
+    color: #2596BE !important;
+}
+
+/* BEST PRACTICE FIX:
+  REMOVED the global "nav { gap: 30%; }". This is fragile and
+  is now handled by "gap-4" utility classes in the HTML.
+*/
