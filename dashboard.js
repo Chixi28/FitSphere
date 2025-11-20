@@ -1,13 +1,11 @@
 // =====================
-// ADVANCED STEP COUNTER
+// STEP COUNTER FUNCTION
 // =====================
 let stepCount = 0;
-let accHistory = []; // store last few acceleration magnitudes
-const MAX_HISTORY = 5; // moving average window
-const STEP_THRESHOLD = 1.2; // threshold for peak detection (after smoothing)
-const STEP_MIN_INTERVAL = 300; // ms between steps
-
+let lastAcc = 0;
 let lastStepTime = 0;
+const STEP_THRESHOLD = 12; // adjust experimentally
+const STEP_COOLDOWN = 300; // ms
 
 function startStepCounter(simulated = false) {
     console.log("Step counter started!", simulated ? "(simulated)" : "");
@@ -25,32 +23,56 @@ function startStepCounter(simulated = false) {
         return;
     }
 
+    // Real device motion
     window.addEventListener("devicemotion", (event) => {
         const acc = event.accelerationIncludingGravity;
         if (!acc) return;
 
-        // Compute magnitude minus gravity (~9.8 m/s²)
-        let magnitude = Math.sqrt(acc.x**2 + acc.y**2 + acc.z**2) - 9.8;
-        magnitude = Math.max(0, magnitude); // remove negative values
-
-        // Add to history for smoothing
-        accHistory.push(magnitude);
-        if (accHistory.length > MAX_HISTORY) accHistory.shift();
-
-        // Compute moving average
-        const avgAcc = accHistory.reduce((a, b) => a + b, 0) / accHistory.length;
-
+        const totalAcc = Math.sqrt(acc.x**2 + acc.y**2 + acc.z**2);
         const now = Date.now();
 
-        // Step detection: peak above threshold + minimum interval
-        if (avgAcc > STEP_THRESHOLD && now - lastStepTime > STEP_MIN_INTERVAL) {
+        if (totalAcc > STEP_THRESHOLD &&
+            lastAcc <= STEP_THRESHOLD &&
+            now - lastStepTime > STEP_COOLDOWN) {
+
             stepCount++;
             lastStepTime = now;
             document.getElementById("stepCount").textContent = stepCount;
         }
 
-        // Debug log
-        console.log("Magnitude:", magnitude.toFixed(2), "Avg:", avgAcc.toFixed(2), "Steps:", stepCount);
+        lastAcc = totalAcc;
+    });
+}
+
+// =====================
+// LIVE COMPASS FUNCTION
+// =====================
+function startCompass(simulated = false) {
+    const needle = document.querySelector(".compass-needle");
+    const degreeEl = document.querySelector(".compass-degree");
+    const directionEl = document.querySelector(".compass-direction");
+
+    const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
+
+    if (simulated) {
+        setInterval(() => {
+            const angle = Math.floor(Math.random() * 360);
+            needle.style.transform = `rotate(${angle}deg)`;
+            degreeEl.textContent = `${angle}°`;
+            const dirIndex = Math.round(angle / 45) % 8;
+            directionEl.textContent = directions[dirIndex];
+        }, 500);
+        return;
+    }
+
+    window.addEventListener("deviceorientation", (event) => {
+        let alpha = event.alpha; // 0–360 degrees
+        if (alpha === null) return;
+
+        needle.style.transform = `rotate(${alpha}deg)`;
+        degreeEl.textContent = `${Math.round(alpha)}°`;
+        const dirIndex = Math.round(alpha / 45) % 8;
+        directionEl.textContent = directions[dirIndex];
     });
 }
 
@@ -65,8 +87,12 @@ document.getElementById("enableMotion").addEventListener("click", async () => {
         typeof DeviceMotionEvent.requestPermission === "function") {
         try {
             const response = await DeviceMotionEvent.requestPermission();
-            if (response === "granted") startStepCounter();
-            else alert("Permission denied. Cannot access motion sensors.");
+            if (response === "granted") {
+                startStepCounter();
+                startCompass();
+            } else {
+                alert("Permission denied. Cannot access motion sensors.");
+            }
             return;
         } catch (err) {
             alert("Error requesting motion permission.");
@@ -78,10 +104,12 @@ document.getElementById("enableMotion").addEventListener("click", async () => {
     // Android / general
     if (typeof DeviceMotionEvent !== "undefined") {
         startStepCounter();
+        startCompass();
         return;
     }
 
-    // Desktop / unsupported → simulate steps
-    alert("No motion sensors detected. Using simulated steps for testing.");
+    // Desktop / unsupported → simulate both
+    alert("No motion sensors detected. Using simulated step counter and compass.");
     startStepCounter(true);
+    startCompass(true);
 });
