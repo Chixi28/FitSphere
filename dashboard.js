@@ -1,11 +1,13 @@
 // =====================
-// STEP COUNTER FUNCTION
+// ADVANCED STEP COUNTER
 // =====================
 let stepCount = 0;
-let lastAcc = 0;
+let accHistory = []; // store last few acceleration magnitudes
+const MAX_HISTORY = 5; // moving average window
+const STEP_THRESHOLD = 1.2; // threshold for peak detection (after smoothing)
+const STEP_MIN_INTERVAL = 300; // ms between steps
+
 let lastStepTime = 0;
-const STEP_THRESHOLD = 20; // adjust this experimentally
-const STEP_COOLDOWN = 300; // ms
 
 function startStepCounter(simulated = false) {
     console.log("Step counter started!", simulated ? "(simulated)" : "");
@@ -17,36 +19,38 @@ function startStepCounter(simulated = false) {
     if (simulated) {
         // Desktop/laptop simulation
         setInterval(() => {
-            // Randomly increase step count
             if (Math.random() > 0.95) stepCount++;
             document.getElementById("stepCount").textContent = stepCount;
-            console.log("Simulated steps:", stepCount);
         }, 200);
         return;
     }
 
-    // Real device motion
     window.addEventListener("devicemotion", (event) => {
         const acc = event.accelerationIncludingGravity;
         if (!acc) return;
 
-        // Total acceleration magnitude
-        const totalAcc = Math.sqrt(acc.x**2 + acc.y**2 + acc.z**2);
+        // Compute magnitude minus gravity (~9.8 m/s²)
+        let magnitude = Math.sqrt(acc.x**2 + acc.y**2 + acc.z**2) - 9.8;
+        magnitude = Math.max(0, magnitude); // remove negative values
+
+        // Add to history for smoothing
+        accHistory.push(magnitude);
+        if (accHistory.length > MAX_HISTORY) accHistory.shift();
+
+        // Compute moving average
+        const avgAcc = accHistory.reduce((a, b) => a + b, 0) / accHistory.length;
+
         const now = Date.now();
 
-        if (totalAcc > STEP_THRESHOLD &&
-            lastAcc <= STEP_THRESHOLD &&
-            now - lastStepTime > STEP_COOLDOWN) {
-
+        // Step detection: peak above threshold + minimum interval
+        if (avgAcc > STEP_THRESHOLD && now - lastStepTime > STEP_MIN_INTERVAL) {
             stepCount++;
             lastStepTime = now;
             document.getElementById("stepCount").textContent = stepCount;
         }
 
-        lastAcc = totalAcc;
-
         // Debug log
-        console.log("Motion event:", acc.x, acc.y, acc.z, "total:", totalAcc.toFixed(2), "steps:", stepCount);
+        console.log("Magnitude:", magnitude.toFixed(2), "Avg:", avgAcc.toFixed(2), "Steps:", stepCount);
     });
 }
 
