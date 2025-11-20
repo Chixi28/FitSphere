@@ -6,37 +6,24 @@ let lastAcc = 0;
 let lastStepTime = 0;
 const STEP_THRESHOLD = 12; // Adjust experimentally
 const STEP_COOLDOWN = 300; // ms
-// Select DOM elements
+
+// =====================
+// COMPASS SETUP
+// =====================
 const needle = document.querySelector(".compass-needle");
 const degreeEl = document.querySelector(".compass-degree");
 
-// Check if device orientation is available
-if (window.DeviceOrientationEvent) {
-    // Request permission for iOS 13+ devices
-    if (typeof DeviceOrientationEvent.requestPermission === "function") {
-        DeviceOrientationEvent.requestPermission()
-            .then(response => {
-                if (response === "granted") {
-                    startCompass();
-                } else {
-                    alert("Permission denied. Using simulated compass.");
-                    simulateCompass();
-                }
-            })
-            .catch(err => {
-                console.error(err);
-                simulateCompass();
-            });
-    } else {
-        // Android / general
-        startCompass();
-    }
-} else {
-    // No device orientation → simulate
-    simulateCompass();
-}
+// =====================
+// LOCATION SETUP
+// =====================
+const coordsEl = document.getElementById("locationCoords");
+const labelEl = document.getElementById("locationLabel");
 
-// ======= REAL DEVICE ORIENTATION =======
+// =====================
+// COMPASS FUNCTIONS
+// =====================
+
+// Real device orientation
 function startCompass() {
     window.addEventListener("deviceorientation", (event) => {
         let alpha = event.alpha; // 0–360 degrees
@@ -48,7 +35,7 @@ function startCompass() {
     });
 }
 
-// ======= SIMULATION =======
+// Simulated compass for desktops / denied permissions
 function simulateCompass() {
     let angle = 0;
     setInterval(() => {
@@ -58,7 +45,9 @@ function simulateCompass() {
     }, 500);
 }
 
-
+// =====================
+// STEP COUNTER FUNCTION
+// =====================
 function startStepCounter(simulated = false) {
     console.log("Step counter started!", simulated ? "(simulated)" : "");
 
@@ -93,10 +82,36 @@ function startStepCounter(simulated = false) {
         }
 
         lastAcc = totalAcc;
-
-        // Optional debug log
-        // console.log("Motion event:", acc.x, acc.y, acc.z, "total:", totalAcc.toFixed(2), "steps:", stepCount);
     });
+}
+
+// =====================
+// LOCATION FUNCTION
+// =====================
+function startLocation() {
+    if (!navigator.geolocation) {
+        coordsEl.textContent = "Geolocation not supported.";
+        labelEl.textContent = "-";
+        return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const { latitude, longitude } = position.coords;
+            coordsEl.textContent = `${latitude.toFixed(5)}°, ${longitude.toFixed(5)}°`;
+            labelEl.textContent = "Your Location";
+        },
+        (error) => {
+            console.error(error);
+            coordsEl.textContent = "Location access denied.";
+            labelEl.textContent = "-";
+        },
+        {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge: 0
+        }
+    );
 }
 
 // ================================
@@ -105,15 +120,20 @@ function startStepCounter(simulated = false) {
 document.getElementById("enableMotion").addEventListener("click", async () => {
     const btn = document.getElementById("enableMotion");
 
-    // iOS: request permission
+    // iOS: request permission for motion sensors
     if (typeof DeviceMotionEvent !== "undefined" &&
         typeof DeviceMotionEvent.requestPermission === "function") {
         try {
             const response = await DeviceMotionEvent.requestPermission();
             if (response === "granted") {
                 startStepCounter();
+                startCompass();
+                startLocation();
             } else {
-                alert("Permission denied. Cannot access motion sensors.");
+                alert("Permission denied. Using simulated sensors.");
+                startStepCounter(true);
+                simulateCompass();
+                startLocation(); // will still ask location permission
             }
             return;
         } catch (err) {
@@ -124,13 +144,15 @@ document.getElementById("enableMotion").addEventListener("click", async () => {
     }
 
     // Android / general
-    if (typeof DeviceMotionEvent !== "undefined") {
-        startStepCounter();
-        return;
-    }
+    startStepCounter();
+    startCompass();
+    startLocation();
 
     // Desktop / unsupported → simulate both
-    alert("No motion sensors detected. Using simulated step counter and compass.");
-    startStepCounter(true);
-    startCompass(true);
+    if (!("DeviceMotionEvent" in window)) {
+        alert("No motion sensors detected. Using simulated step counter and compass.");
+        startStepCounter(true);
+        simulateCompass();
+        startLocation();
+    }
 });
