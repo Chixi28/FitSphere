@@ -9,7 +9,7 @@ function startAccelerometer(simulated = false) {
     btn.textContent = simulated ? "Simulated Accelerometer Enabled" : "Accelerometer Enabled";
 
     if (simulated) {
-        // Update simulated values every 100ms
+        // Simulated values for desktop/laptop testing
         setInterval(() => {
             const x = (Math.random() * 2 - 1).toFixed(3);
             const y = (Math.random() * 2 - 1).toFixed(3);
@@ -22,7 +22,7 @@ function startAccelerometer(simulated = false) {
         return;
     }
 
-    // Listen to real motion events
+    // Listen to real device motion events
     window.addEventListener("devicemotion", (event) => {
         const acc = event.accelerationIncludingGravity;
         if (!acc) return;
@@ -62,7 +62,7 @@ document.getElementById("enableMotion").addEventListener("click", async () => {
         return;
     }
 
-    // Desktop / unsupported → use simulated values
+    // Desktop / unsupported → simulate motion
     alert("No motion sensors detected. Using simulated values for testing.");
     startAccelerometer(true);
 });
