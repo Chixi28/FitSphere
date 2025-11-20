@@ -6,6 +6,58 @@ let lastAcc = 0;
 let lastStepTime = 0;
 const STEP_THRESHOLD = 12; // Adjust experimentally
 const STEP_COOLDOWN = 300; // ms
+// Select DOM elements
+const needle = document.querySelector(".compass-needle");
+const degreeEl = document.querySelector(".compass-degree");
+
+// Check if device orientation is available
+if (window.DeviceOrientationEvent) {
+    // Request permission for iOS 13+ devices
+    if (typeof DeviceOrientationEvent.requestPermission === "function") {
+        DeviceOrientationEvent.requestPermission()
+            .then(response => {
+                if (response === "granted") {
+                    startCompass();
+                } else {
+                    alert("Permission denied. Using simulated compass.");
+                    simulateCompass();
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                simulateCompass();
+            });
+    } else {
+        // Android / general
+        startCompass();
+    }
+} else {
+    // No device orientation → simulate
+    simulateCompass();
+}
+
+// ======= REAL DEVICE ORIENTATION =======
+function startCompass() {
+    window.addEventListener("deviceorientation", (event) => {
+        let alpha = event.alpha; // 0–360 degrees
+        if (alpha === null) return;
+
+        // Rotate the needle
+        needle.style.transform = `rotate(${alpha}deg)`;
+        degreeEl.textContent = `${Math.round(alpha)}°`;
+    });
+}
+
+// ======= SIMULATION =======
+function simulateCompass() {
+    let angle = 0;
+    setInterval(() => {
+        angle = (angle + 10) % 360;
+        needle.style.transform = `rotate(${angle}deg)`;
+        degreeEl.textContent = `${angle}°`;
+    }, 500);
+}
+
 
 function startStepCounter(simulated = false) {
     console.log("Step counter started!", simulated ? "(simulated)" : "");
@@ -82,55 +134,3 @@ document.getElementById("enableMotion").addEventListener("click", async () => {
     startStepCounter(true);
     startCompass(true);
 });
-
-// Select DOM elements
-const needle = document.querySelector(".compass-needle");
-const degreeEl = document.querySelector(".compass-degree");
-
-// Check if device orientation is available
-if (window.DeviceOrientationEvent) {
-    // Request permission for iOS 13+ devices
-    if (typeof DeviceOrientationEvent.requestPermission === "function") {
-        DeviceOrientationEvent.requestPermission()
-            .then(response => {
-                if (response === "granted") {
-                    startCompass();
-                } else {
-                    alert("Permission denied. Using simulated compass.");
-                    simulateCompass();
-                }
-            })
-            .catch(err => {
-                console.error(err);
-                simulateCompass();
-            });
-    } else {
-        // Android / general
-        startCompass();
-    }
-} else {
-    // No device orientation → simulate
-    simulateCompass();
-}
-
-// ======= REAL DEVICE ORIENTATION =======
-function startCompass() {
-    window.addEventListener("deviceorientation", (event) => {
-        let alpha = event.alpha; // 0–360 degrees
-        if (alpha === null) return;
-
-        // Rotate the needle
-        needle.style.transform = `rotate(${alpha}deg)`;
-        degreeEl.textContent = `${Math.round(alpha)}°`;
-    });
-}
-
-// ======= SIMULATION =======
-function simulateCompass() {
-    let angle = 0;
-    setInterval(() => {
-        angle = (angle + 10) % 360;
-        needle.style.transform = `rotate(${angle}deg)`;
-        degreeEl.textContent = `${angle}°`;
-    }, 500);
-}
