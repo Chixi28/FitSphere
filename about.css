@@ -1,0 +1,121 @@
+/* --- GLOBAL STYLES --- */
+/* Apply Bebas Neue to all button-like links for consistency */
+.btn-brand-primary,
+.btn-brand-secondary,
+.btn-brand-tertiary,
+.footer-slogan,
+.header-brand {
+font-family: 'Bebas Neue', sans-serif;
+text-transform: uppercase;
+}
+
+/* --- HEADER STYLES --- */
+
+.app-header {
+background-color: #2596BE;
+}
+
+.header-brand {
+font-size: 3rem;
+}
+
+/* Base button styles for the navigation links */
+.btn-brand-primary,
+.btn-brand-secondary,
+.btn-brand-tertiary {
+font-size: 2rem;
+color: white !important;
+background-color: transparent; 
+border: 2px solid transparent;
+transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+/* --- BUTTON HOVER STYLES --- */
+
+.btn-brand-primary:hover {
+background-color: #2085A7;
+border-color: #2085A7;
+color: white !important; 
+}
+
+.btn-brand-secondary:hover {
+background-color: transparent;
+border-color: white;
+color: white !important; 
+}
+
+.btn-brand-tertiary:hover {
+background-color: #197893; 
+border-color: #197893;
+color: white !important; 
+}
+
+/* --- HERO BACKGROUND STYLES (MODIFIED) --- */
+
+.hero-banner {
+width: 100%;
+height: 100vh;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+/* MODIFIED: Moved background-image here from the old .hero-banner-main */
+background-image: url("./images/tree-landscape.JPG");
+}
+
+/* REMOVED: This class is no longer needed as a separate element */
+/*
+.hero-banner-main {
+    background-image: url("./images/tree-landscape.JPG");
+}
+*/
+/* MODIFIED: Re-styled to match the image */
+.hero-title {
+font-size: 6rem; /* Made text larger */
+font-family: 'Bebas Neue', sans-serif;
+text-transform: uppercase;
+color: white;
+
+/* ADDED: Styles from the dashed box in the image */
+display: inline-block; /* Makes border wrap the text */
+padding: 0 1rem;
+margin-bottom: 2.5rem; /* Added space below the title */
+}
+
+/* --- ADDED: NEW STYLES FOR ABOUT CONTENT --- */
+.about-content {
+font-family: 'Bebas Neue', sans-serif;
+color: white;
+font-size: 1.2rem;
+line-height: 1.7;
+/* Constrain width to match the image layout */
+max-width: 65%; 
+}
+
+.about-content p {
+margin-bottom: 1.5rem; /* Space between each item */
+}
+
+.about-content .text-highlight {
+/* Picked a green that matches the image */
+color: white; /* A light green */
+}
+
+/* --- FOOTER STYLES (UNCHANGED) --- */
+
+.app-footer {
+background-color: black;
+font-family: 'Bebas Neue', sans-serif;
+}
+
+.footer-slogan {
+font-size: 2rem;
+}
+
+.app-footer nav a {
+font-size: 2rem;
+transition: color 0.2s ease-in-out;
+}
+
+.app-footer nav a:hover {
+color: #2596BE !important;
+}
