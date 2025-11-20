@@ -207,23 +207,6 @@
             font-size: 1.2rem;
         }
 
-        /* Running Man Illustration */
-        .hero-main-running-man {
-            position: absolute;
-            bottom: 0;
-            right: 2rem;
-            width: 200px;
-            height: 200px;
-            background-color: #2596BE;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-family: 'Bebas Neue', sans-serif;
-        }
-
 /* --- FOOTER STYLES --- */
 
 .app-footer {
