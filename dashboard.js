@@ -47,41 +47,6 @@ function startStepCounter(simulated = false) {
     });
 }
 
-// =====================
-// LIVE COMPASS FUNCTION
-// =====================
-function startCompass(simulated = false) {
-    const needle = document.querySelector(".compass-needle");
-    const degreeEl = document.querySelector(".compass-degree");
-    const directionEl = document.querySelector(".compass-direction");
-
-    const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-
-    if (simulated) {
-        setInterval(() => {
-            const angle = Math.floor(Math.random() * 360);
-            needle.style.transform = `rotate(${angle}deg)`;
-            degreeEl.textContent = `${angle}°`;
-            const dirIndex = Math.round(angle / 45) % 8;
-            directionEl.textContent = directions[dirIndex];
-        }, 500);
-        return;
-    }
-
-    // Real device orientation
-    window.addEventListener("deviceorientation", (event) => {
-        let alpha = event.alpha; // 0–360 degrees
-        if (alpha === null) return;
-
-        // Rotate needle
-        needle.style.transform = `rotate(${alpha}deg)`;
-        degreeEl.textContent = `${Math.round(alpha)}°`;
-
-        const dirIndex = Math.round(alpha / 45) % 8;
-        directionEl.textContent = directions[dirIndex];
-    });
-}
-
 // ================================
 // ENABLE BUTTON CLICK HANDLER
 // ================================
@@ -95,7 +60,6 @@ document.getElementById("enableMotion").addEventListener("click", async () => {
             const response = await DeviceMotionEvent.requestPermission();
             if (response === "granted") {
                 startStepCounter();
-                startCompass();
             } else {
                 alert("Permission denied. Cannot access motion sensors.");
             }
@@ -110,7 +74,6 @@ document.getElementById("enableMotion").addEventListener("click", async () => {
     // Android / general
     if (typeof DeviceMotionEvent !== "undefined") {
         startStepCounter();
-        startCompass();
         return;
     }
 
@@ -119,3 +82,55 @@ document.getElementById("enableMotion").addEventListener("click", async () => {
     startStepCounter(true);
     startCompass(true);
 });
+
+// Select DOM elements
+const needle = document.querySelector(".compass-needle");
+const degreeEl = document.querySelector(".compass-degree");
+
+// Check if device orientation is available
+if (window.DeviceOrientationEvent) {
+    // Request permission for iOS 13+ devices
+    if (typeof DeviceOrientationEvent.requestPermission === "function") {
+        DeviceOrientationEvent.requestPermission()
+            .then(response => {
+                if (response === "granted") {
+                    startCompass();
+                } else {
+                    alert("Permission denied. Using simulated compass.");
+                    simulateCompass();
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                simulateCompass();
+            });
+    } else {
+        // Android / general
+        startCompass();
+    }
+} else {
+    // No device orientation → simulate
+    simulateCompass();
+}
+
+// ======= REAL DEVICE ORIENTATION =======
+function startCompass() {
+    window.addEventListener("deviceorientation", (event) => {
+        let alpha = event.alpha; // 0–360 degrees
+        if (alpha === null) return;
+
+        // Rotate the needle
+        needle.style.transform = `rotate(${alpha}deg)`;
+        degreeEl.textContent = `${Math.round(alpha)}°`;
+    });
+}
+
+// ======= SIMULATION =======
+function simulateCompass() {
+    let angle = 0;
+    setInterval(() => {
+        angle = (angle + 10) % 360;
+        needle.style.transform = `rotate(${angle}deg)`;
+        degreeEl.textContent = `${angle}°`;
+    }, 500);
+}
