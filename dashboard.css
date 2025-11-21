@@ -1,5 +1,4 @@
 /* --- GLOBAL STYLES --- */
-/* Apply Bebas Neue to all button-like links for consistency */
 .btn-brand-primary,
 .btn-brand-secondary,
 .btn-brand-tertiary,
@@ -10,20 +9,14 @@
 }
 
 /* --- HEADER STYLES --- */
-
 .app-header {
     background-color: #2596BE;
 }
 
 .header-brand {
     font-size: 3rem;
-    /* BEST PRACTICE FIX:
-      REMOVED "margin-right: 60%;". This is now handled by
-      "justify-content-between" in the HTML.
-    */
 }
 
-/* Base button styles for the navigation links */
 .btn-brand-primary,
 .btn-brand-secondary,
 .btn-brand-tertiary {
@@ -34,193 +27,154 @@
     transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
-/* --- BUTTON HOVER STYLES --- */
-
+/* Button hovers */
 .btn-brand-primary:hover {
     background-color: #2085A7;
     border-color: #2085A7;
-    color: white !important; 
 }
-
 .btn-brand-secondary:hover {
-    background-color: transparent;
     border-color: white;
-    color: white !important; 
 }
-
 .btn-brand-tertiary:hover {
     background-color: #197893; 
     border-color: #197893;
-    color: white !important; 
 }
-/* --- HERO STYLES --- */
-        .hero-title-container {
-            font-family: 'Bebas Neue', sans-serif;
-            background-color: #e9ecef;
-            padding: 2rem 0;
-            margin-bottom: 2rem;
-        }
 
-        .hero-banner-main {
-            font-size: 4rem;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
+/* --- HERO SECTION --- */
+.hero-title-container {
+    font-family: 'Bebas Neue', sans-serif;
+    background-color: #e9ecef;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+}
 
-        .hero-banner-secondary {
-            font-size: 1.5rem;
-            color: #666;
-        }
+.hero-banner-main {
+    font-size: 4rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
 
-        /* --- MAIN CONTENT STYLES --- */
-        .hero-main-container {
-            position: relative;
-            padding: 0 2rem;
-            flex: 1;
-        }
+.hero-banner-secondary {
+    font-size: 1.5rem;
+    color: #666;
+}
 
-        .hero-main-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
+/* --- MAIN CONTENT AREA --- */
+.hero-main-container {
+    padding: 0 2rem;
+}
 
-        .dashboard-box {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 2rem;
-            height: 450px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
+.hero-main-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
 
-        .box-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 2rem;
-            color: #2596BE;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid #e9ecef;
-            padding-bottom: 0.5rem;
-        }
+.dashboard-box {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    min-height: 350px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
 
-        /* Steps Box */
-        #stepCount {
-            font-size: 5rem;
-            font-weight: bold;
-            color: #2596BE;
-            text-align: center;
-            margin-top: 1.5rem;
-        }
+/* Titles */
+.box-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: #2596BE;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 0.5rem;
+}
 
-        .steps-label {
-            font-size: 1.2rem;
-            text-align: center;
-            color: #666;
-            margin-top: 0.5rem;
-        }
+/* Steps counter */
+#stepCount {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #2596BE;
+    text-align: center;
+    margin-top: 1.5rem;
+}
 
-        /* Compass Box */
-        .compass-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
+.steps-label {
+    font-size: 1.2rem;
+    text-align: center;
+    color: #666;
+    margin-top: 0.5rem;
+}
 
-        .compass-circle {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 3px solid #2596BE;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
+/* Compass */
+.compass-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
 
-        .compass-needle {
-            width: 4px;
-            height: 80px;
-            background-color: #e74c3c;
-            position: absolute;
-            top: 10px;
-            transform-origin: bottom center;
-            transform: rotate(45deg);
-            transition: transform 0.2s ease-out;
-        }
+.compass-circle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid #2596BE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 1rem;
+}
 
-        .compass-direction {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #333;
-        }
+.compass-needle {
+    width: 4px;
+    height: 80px;
+    background-color: #e74c3c;
+    position: absolute;
+    top: 10px;
+    transform-origin: bottom center;
+    transition: transform 0.2s ease-out;
+}
 
-        .compass-degree {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #2596BE;
-            margin-top: 0.5rem;
-        }
+.compass-degree {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2596BE;
+}
 
-        /* Location Box */
-        .location-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: 100%;
-        }
+/* Location */
+.location-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
 
-        .location-coords {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
+#locationCoords {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+}
 
-        .location-label {
-            font-size: 1.5rem;
-            color: #666;
-            text-align: center;
-        }
+#locationLabel {
+    font-size: 1.5rem;
+    text-align: center;
+    color: #666;
+}
 
-        /* Graph Box */
-        .graph-container {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .graph-placeholder {
-            flex: 1;
-            background-color: #f8f9fa;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 1.2rem;
-        }
-
-        .graph-container {
+/* Graph */
+.graph-container {
     width: 100%;
-    height: 300px;  /* <-- Set a fixed height */
+    height: 35vh;
+    min-height: 250px;
     padding: 10px;
 }
 
-@media (max-width: 600px) {
-    .graph-container {
-        height: 260px; /* slightly taller for phones */
-    }
-}
-
-/* --- FOOTER STYLES --- */
-
+/* Footer */
 .app-footer {
     background-color: black;
     font-family: 'Bebas Neue', sans-serif;
@@ -228,22 +182,126 @@
 
 .footer-slogan {
     font-size: 2rem;
-    /* BEST PRACTICE FIX:
-      REMOVED "margin-right: 51.25%;". This is now handled by
-      "justify-content-between" in the HTML.
-    */
 }
 
 .app-footer nav a {
     font-size: 2rem;
     transition: color 0.2s ease-in-out;
 }
-
 .app-footer nav a:hover {
     color: #2596BE !important;
 }
 
-/* BEST PRACTICE FIX:
-  REMOVED the global "nav { gap: 30%; }". This is fragile and
-  is now handled by "gap-4" utility classes in the HTML.
-*/
+
+/* ===========================================
+   RESPONSIVENESS FIXES
+   =========================================== */
+
+/* Tablets + small laptops */
+@media (max-width: 992px) {
+
+    .hero-main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-banner-main {
+        font-size: 3rem;
+    }
+
+    .hero-banner-secondary {
+        font-size: 1.2rem;
+    }
+
+    .btn-brand-primary,
+    .btn-brand-secondary,
+    .btn-brand-tertiary {
+        font-size: 1.6rem;
+    }
+
+    .header-brand {
+        font-size: 2.5rem;
+    }
+
+    #stepCount {
+        font-size: 4rem;
+    }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+
+    .header-brand {
+        font-size: 2rem;
+    }
+
+    .btn-brand-primary,
+    .btn-brand-secondary,
+    .btn-brand-tertiary {
+        font-size: 1.4rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .hero-banner-main {
+        font-size: 2.5rem;
+    }
+
+    .hero-banner-secondary {
+        font-size: 1rem;
+    }
+
+    .dashboard-box {
+        padding: 1.5rem;
+        min-height: 320px;
+    }
+
+    .compass-circle {
+        width: 150px;
+        height: 150px;
+    }
+    .compass-needle {
+        height: 70px;
+    }
+
+    .graph-container {
+        height: 30vh;
+        min-height: 200px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+
+    .hero-banner-main {
+        font-size: 2.2rem;
+    }
+    .hero-banner-secondary {
+        font-size: 1rem;
+    }
+
+    #stepCount {
+        font-size: 3.5rem;
+    }
+
+    #locationCoords {
+        font-size: 1.4rem;
+    }
+    #locationLabel {
+        font-size: 1.1rem;
+    }
+
+    .compass-circle {
+        width: 130px;
+        height: 130px;
+    }
+    .compass-needle {
+        height: 60px;
+    }
+    .compass-degree {
+        font-size: 1.5rem;
+    }
+
+    .footer-slogan,
+    .app-footer nav a {
+        font-size: 1.4rem;
+    }
+}
