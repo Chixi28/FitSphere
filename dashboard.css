@@ -251,15 +251,15 @@
 
     .dashboard-box {
         padding: 1.5rem;
-        min-height: 320px;
+        min-height: 250px;
     }
 
     .compass-circle {
-        width: 150px;
-        height: 150px;
+        width: 100px;
+        height: 100px;
     }
     .compass-needle {
-        height: 70px;
+        height: 40px;
     }
 
     .graph-container {
@@ -290,11 +290,11 @@
     }
 
     .compass-circle {
-        width: 130px;
-        height: 130px;
+        width: 80px;
+        height: 80px;
     }
     .compass-needle {
-        height: 60px;
+        height: 30px;
     }
     .compass-degree {
         font-size: 1.5rem;
