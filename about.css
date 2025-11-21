@@ -1,121 +1,220 @@
-/* --- GLOBAL STYLES --- */
-/* Apply Bebas Neue to all button-like links for consistency */
+/* ---------------------------------------------- */
+/* GLOBAL DEFAULTS                                */
+/* ---------------------------------------------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Bebas Neue', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Apply Bebas Neue to all button-like links */
 .btn-brand-primary,
 .btn-brand-secondary,
 .btn-brand-tertiary,
 .footer-slogan,
 .header-brand {
-font-family: 'Bebas Neue', sans-serif;
-text-transform: uppercase;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
 }
 
-/* --- HEADER STYLES --- */
+/* ---------------------------------------------- */
+/* HEADER                                         */
+/* ---------------------------------------------- */
 
 .app-header {
-background-color: #2596BE;
+    background-color: #2596BE;
 }
 
 .header-brand {
-font-size: 3rem;
+    font-size: 3rem;
 }
 
-/* Base button styles for the navigation links */
 .btn-brand-primary,
 .btn-brand-secondary,
 .btn-brand-tertiary {
-font-size: 2rem;
-color: white !important;
-background-color: transparent; 
-border: 2px solid transparent;
-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    font-size: 2rem;
+    color: white !important;
+    background-color: transparent;
+    border: 2px solid transparent;
+    transition: background-color 0.2s, border-color 0.2s;
 }
 
-/* --- BUTTON HOVER STYLES --- */
-
+/* Button hover styles */
 .btn-brand-primary:hover {
-background-color: #2085A7;
-border-color: #2085A7;
-color: white !important; 
+    background-color: #2085A7;
+    border-color: #2085A7;
 }
 
 .btn-brand-secondary:hover {
-background-color: transparent;
-border-color: white;
-color: white !important; 
+    background-color: transparent;
+    border-color: white;
 }
 
 .btn-brand-tertiary:hover {
-background-color: #197893; 
-border-color: #197893;
-color: white !important; 
+    background-color: #197893;
+    border-color: #197893;
 }
 
-/* --- HERO BACKGROUND STYLES (MODIFIED) --- */
+/* ---------------------------------------------- */
+/* HERO                                           */
+/* ---------------------------------------------- */
 
 .hero-banner {
-width: 100%;
-height: 100vh;
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
-/* MODIFIED: Moved background-image here from the old .hero-banner-main */
-background-image: url("./images/tree-landscape.JPG");
+    width: 100%;
+    height: 100vh;
+    background-image: url("./images/tree-landscape.JPG");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
 }
 
-/* REMOVED: This class is no longer needed as a separate element */
-/*
-.hero-banner-main {
-    background-image: url("./images/tree-landscape.JPG");
-}
-*/
-/* MODIFIED: Re-styled to match the image */
 .hero-title {
-font-size: 6rem; /* Made text larger */
-font-family: 'Bebas Neue', sans-serif;
-text-transform: uppercase;
-color: white;
-
-/* ADDED: Styles from the dashed box in the image */
-display: inline-block; /* Makes border wrap the text */
-padding: 0 1rem;
-margin-bottom: 2.5rem; /* Added space below the title */
+    font-size: 6rem;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
+    color: white;
+    display: inline-block;
+    padding: 0 1rem;
+    margin-bottom: 2.5rem;
 }
 
-/* --- ADDED: NEW STYLES FOR ABOUT CONTENT --- */
+/* ---------------------------------------------- */
+/* ABOUT CONTENT                                  */
+/* ---------------------------------------------- */
+
 .about-content {
-font-family: 'Bebas Neue', sans-serif;
-color: white;
-font-size: 1.2rem;
-line-height: 1.7;
-/* Constrain width to match the image layout */
-max-width: 65%; 
+    font-family: 'Bebas Neue', sans-serif;
+    color: white;
+    font-size: 1.8rem;
+    line-height: 1.4;
+    max-width: 65%;
 }
 
 .about-content p {
-margin-bottom: 1.5rem; /* Space between each item */
+    margin-bottom: 1.5rem;
 }
 
 .about-content .text-highlight {
-/* Picked a green that matches the image */
-color: white; /* A light green */
+    color: white;
 }
 
-/* --- FOOTER STYLES (UNCHANGED) --- */
+/* ---------------------------------------------- */
+/* FOOTER                                         */
+/* ---------------------------------------------- */
 
 .app-footer {
-background-color: black;
-font-family: 'Bebas Neue', sans-serif;
+    background-color: black;
+    font-family: 'Bebas Neue', sans-serif;
 }
 
 .footer-slogan {
-font-size: 2rem;
+    font-size: 2rem;
 }
 
 .app-footer nav a {
-font-size: 2rem;
-transition: color 0.2s ease-in-out;
+    font-size: 2rem;
+    transition: color 0.2s;
 }
 
 .app-footer nav a:hover {
-color: #2596BE !important;
+    color: #2596BE !important;
+}
+
+/* ---------------------------------------------- */
+/* RESPONSIVE FIXES – TABLETS / SMALL LAPTOPS     */
+/* ---------------------------------------------- */
+
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 4.5rem;
+    }
+
+    .about-content {
+        max-width: 80%;
+        font-size: 1.6rem;
+    }
+
+    .btn-brand-primary,
+    .btn-brand-secondary,
+    .btn-brand-tertiary {
+        font-size: 1.6rem;
+    }
+
+    .header-brand {
+        font-size: 2.2rem;
+    }
+}
+
+/* ---------------------------------------------- */
+/* RESPONSIVE FIXES – ANDROID PHONES              */
+/* ---------------------------------------------- */
+
+@media (max-width: 768px) {
+    .hero-banner {
+        padding-top: 3rem;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .hero-title {
+        font-size: 3.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .about-content {
+        max-width: 100%;
+        font-size: 1.4rem;
+        line-height: 1.3;
+    }
+
+    .btn-brand-primary,
+    .btn-brand-secondary,
+    .btn-brand-tertiary {
+        font-size: 1.4rem;
+        padding: 0.3rem 0.8rem;
+    }
+
+    .footer-slogan {
+        font-size: 1.4rem;
+    }
+}
+
+/* ---------------------------------------------- */
+/* RESPONSIVE FIXES – SMALL PHONES                */
+/* ---------------------------------------------- */
+
+@media (max-width: 480px) {
+    .header-brand {
+        font-size: 1.8rem;
+    }
+
+    .hero-title {
+        font-size: 2.4rem;
+    }
+
+    .about-content {
+        font-size: 1.3rem;
+        line-height: 1.25;
+    }
+
+    .app-footer nav a {
+        font-size: 1.3rem;
+    }
+
+    .footer-slogan {
+        font-size: 1.2rem;
+    }
+
+    nav.d-flex.gap-4 {
+        gap: 1rem !important;
+    }
 }
