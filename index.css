@@ -1,5 +1,4 @@
 /* --- GLOBAL STYLES --- */
-/* Apply Bebas Neue to all button-like links for consistency */
 .btn-brand-primary,
 .btn-brand-secondary,
 .btn-brand-tertiary,
@@ -10,20 +9,15 @@
 }
 
 /* --- HEADER STYLES --- */
-
 .app-header {
     background-color: #2596BE;
 }
 
 .header-brand {
     font-size: 3rem;
-    /* BEST PRACTICE FIX:
-      REMOVED "margin-right: 60%;". This is now handled by
-      "justify-content-between" in the HTML.
-    */
 }
 
-/* Base button styles for the navigation links */
+/* Nav buttons */
 .btn-brand-primary,
 .btn-brand-secondary,
 .btn-brand-tertiary {
@@ -34,42 +28,32 @@
     transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
-/* --- BUTTON HOVER STYLES --- */
-
+/* Hover effects */
 .btn-brand-primary:hover {
     background-color: #2085A7;
     border-color: #2085A7;
-    color: white !important; 
 }
 
 .btn-brand-secondary:hover {
-    background-color: transparent;
     border-color: white;
-    color: white !important; 
 }
 
 .btn-brand-tertiary:hover {
-    background-color: #197893; 
+    background-color: #197893;
     border-color: #197893;
-    color: white !important; 
 }
 
-/* --- HERO BACKGROUND STYLES --- */
-
-/* BEST PRACTICE FIX (DRY PRINCIPLE):
-  Combined ".hero-section" and ".hero-section-two" into one
-  reusable ".hero-banner" class with all the common properties.
-*/
+/* --- HERO SECTION --- */
 .hero-banner {
     width: 100%;
-    height: 80vh;
+    min-height: 80vh;   /* changed from fixed height */
+    padding: 40px 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-/* These "modifier" classes now ONLY set the specific background image.
-*/
+/* Background images */
 .hero-banner-main {
     background-image: url('./images/Marathon-racing.JPG');
 }
@@ -78,23 +62,17 @@
     background-image: url('./images/couple-jogging.JPG');
 }
 
-
-/* BEST PRACTICE FIX (SEMANTICS):
-  Renamed ".hero-title-one" to ".hero-title" to match the new <h1>.
-*/
+/* Titles */
 .hero-title {
     font-size: 4rem;
     font-weight: bold;
 }
 
-/* BEST PRACTICE FIX (DRY PRINCIPLE):
-  DELETED ".hero-title-two" because it was identical to ".hero-title-one".
-*/
-
 .hero-subtitle {
     font-size: 1.5rem;
 }
 
+/* Buttons */
 .hero-actions a {
     color: white;
     font-weight: bold;
@@ -103,18 +81,13 @@
     text-transform: uppercase;
 }
 
+/* Secondary section paragraph */
 .hero-banner-secondary p {
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-/* BEST PRACTICE FIX:
-  REMOVED ".hero-section-two p" styles. This is now handled by
-  the "fs-6" utility class in the HTML.
-*/
-
-/* --- FOOTER STYLES --- */
-
+/* --- FOOTER --- */
 .app-footer {
     background-color: black;
     font-family: 'Bebas Neue', sans-serif;
@@ -122,10 +95,6 @@
 
 .footer-slogan {
     font-size: 2rem;
-    /* BEST PRACTICE FIX:
-      REMOVED "margin-right: 51.25%;". This is now handled by
-      "justify-content-between" in the HTML.
-    */
 }
 
 .app-footer nav a {
@@ -137,7 +106,118 @@
     color: #2596BE !important;
 }
 
-/* BEST PRACTICE FIX:
-  REMOVED the global "nav { gap: 30%; }". This is fragile and
-  is now handled by "gap-4" utility classes in the HTML.
-*/
+/* ============================================
+   RESPONSIVE FIXES — THIS IS WHAT YOU NEEDED
+   ============================================ */
+
+/* Tablets and large phones (<= 992px) */
+@media (max-width: 992px) {
+
+    .header-brand {
+        font-size: 2.5rem;
+    }
+
+    nav a.btn {
+        font-size: 1.6rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero-actions a {
+        font-size: 1.5rem;
+    }
+
+    .hero-banner-secondary p {
+        width: 80% !important;
+        font-size: 1.3rem;
+    }
+}
+
+/* Phones (<= 768px) */
+@media (max-width: 768px) {
+
+    .app-header .container-fluid {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero-banner {
+        min-height: 60vh;
+        padding: 30px 10px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .hero-actions a {
+        width: 100%;
+        max-width: 250px;
+        font-size: 1.4rem;
+    }
+
+    .hero-banner-secondary p {
+        width: 100% !important;
+        font-size: 1.2rem;
+    }
+
+    .footer-slogan,
+    .app-footer nav a {
+        font-size: 1.5rem;
+    }
+
+    .app-footer .container-fluid {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
+
+/* Small phones (<= 480px) */
+@media (max-width: 480px) {
+
+    .header-brand {
+        font-size: 2rem;
+    }
+
+    nav a.btn {
+        font-size: 1.2rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .hero-banner-secondary p {
+        font-size: 1rem;
+    }
+
+    .footer-slogan,
+    .app-footer nav a {
+        font-size: 1.2rem;
+    }
+}
