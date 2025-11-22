@@ -230,6 +230,11 @@
 /* Phones */
 @media (max-width: 768px) {
 
+    .hero-main-container {
+    padding: 0 1.5rem;
+    }
+
+
     .header-brand {
         font-size: 2rem;
     }
@@ -270,6 +275,10 @@
 
 /* Small phones */
 @media (max-width: 480px) {
+
+    .hero-main-container {
+    padding: 0 1rem;
+    }
 
     .hero-banner-main {
         font-size: 2.2rem;
