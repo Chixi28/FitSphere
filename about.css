@@ -113,6 +113,8 @@ body {
     margin-bottom: 1.5rem;
 }
 
+.about-content p:nth-child(6) { animation-delay: 6s; }
+
 .about-content .text-highlight {
     color: white;
 }
