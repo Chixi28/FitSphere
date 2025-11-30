@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="dashboard.css">
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -16,10 +17,10 @@
 <body>
     
     <!-- HEADER -->
-    <header class="app-header py-4">
+    <header class="app-header py-4 animate__animated animate__fadeInDown">
         <div class="container-fluid d-flex align-items-center justify-content-between">
-            <div class="header-brand text-white fs-1 mb-0">FitSphere</div>
-            <nav class="d-flex gap-4">
+            <div class="header-brand text-white fs-1 mb-0 animate__animated animate__fadeInLeft">FitSphere</div>
+            <nav class="d-flex gap-4 animate__animated animate__fadeInRight">
                 <a href="index.html" class="btn btn-brand-primary nav-link">HOME</a>
                 <a href="about.html" class="btn btn-brand-secondary nav-link">ABOUT</a>
             </nav>
@@ -27,23 +28,26 @@
     </header>
 
     <!-- HERO SECTION -->
-    <div class="hero-title-container">
+    <div class="hero-title-container animate__animated animate__zoomIn">
         <p class="hero-banner-main text-center fw-bolder">MOTION DASHBOARD</p>
-        <p class="hero-banner-secondary text-center fw-bolder">TRACK YOUR STEPS, DIRECTION, AND LOCATION IN REAL TIME</p>
+        <p class="hero-banner-secondary text-center fw-bolder animate__animated animate__fadeInUp animate__delay-1s">
+            TRACK YOUR STEPS, DIRECTION, AND LOCATION IN REAL TIME
+        </p>
     </div>
 
     <!-- MAIN DASHBOARD -->
-    <div class="hero-main-container mt-3">
+    <div class="hero-main-container mt-3 animate__animated animate__fadeInUp animate__delay-1s">
         <div class="hero-main-grid">
+
             <!-- ACCELERATION -->
-            <div class="dashboard-box">
+            <div class="dashboard-box animate__animated animate__fadeInUp animate__delay-1s">
                 <div class="box-title">STEPS</div>
                 <div id="stepCount">0</div>
                 <div class="steps-label">TOTAL STEPS</div>
             </div>
 
             <!-- LIVE COMPASS -->
-            <div class="dashboard-box">
+            <div class="dashboard-box animate__animated animate__fadeInUp animate__delay-2s">
                 <div class="box-title">LIVE COMPASS</div>
                 <div class="compass-container">
                     <div class="compass-circle">
@@ -54,7 +58,7 @@
             </div>
 
             <!-- LAT/LON -->
-            <div class="dashboard-box">
+            <div class="dashboard-box animate__animated animate__fadeInUp animate__delay-3s">
                 <div class="box-title">LAT/LON</div>
                 <div class="location-container">
                     <div id="locationCoords">--°, --°</div>
@@ -63,25 +67,26 @@
             </div>
 
             <!-- GRAPH -->
-            <div class="dashboard-box">
+            <div class="dashboard-box animate__animated animate__fadeInUp animate__delay-4s">
                 <div class="box-title">GRAPH</div>
                 <div class="graph-container">
                     <canvas id="stepsChart"></canvas>
                 </div>
             </div>
+
         </div>
     </div>
 
     <!-- BUTTON TO ENABLE MOTION SENSOR -->
-    <div class="text-center my-4">
+    <div class="text-center my-4 animate__animated animate__fadeInUp animate__delay-2s">
         <button id="enableMotion" class="btn btn-primary">Enable Step Counter</button>
     </div>
 
     <!-- FOOTER -->
-    <footer class="app-footer py-4">
+    <footer class="app-footer py-4 animate__animated animate__fadeInUp animate__delay-1s">
         <div class="container-fluid d-flex align-items-center justify-content-between">
-            <div class="footer-slogan text-white mb-0">MOVE SMARTER. LIVE BETTER</div>
-            <nav class="d-flex gap-4">
+            <div class="footer-slogan text-white mb-0 animate__animated animate__fadeInLeft">MOVE SMARTER. LIVE BETTER</div>
+            <nav class="d-flex gap-4 animate__animated animate__fadeInRight">
                 <a href="index.html" class="nav-link text-white">HOME</a>
                 <a href="about.html" class="nav-link text-white">ABOUT</a>
             </nav>

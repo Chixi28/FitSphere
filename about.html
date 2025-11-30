@@ -9,14 +9,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="about.css">
 </head>
 <body>
-    <header class="app-header py-4">
+
+    <header class="app-header py-4 animate__animated animate__fadeInDown">
         <div class="container-fluid d-flex align-items-center justify-content-between">
-            <div class="header-brand text-white fs-1 mb-0">FitSphere</div>
-            <nav class="d-flex gap-4">
+            <div class="header-brand text-white fs-1 mb-0 animate__animated animate__fadeInLeft">FitSphere</div>
+            <nav class="d-flex gap-4 animate__animated animate__fadeInRight">
                  <a href="dashboard.html" class="btn btn-brand-primary nav-link">DASHBOARD</a>
                  <a href="index.html" class="btn btn-brand-secondary nav-link">HOME</a>
             </nav>
@@ -25,47 +26,60 @@
 
     <main class="hero-banner hero-banner-main"> 
         <div class="container py-5">
-            <h1 class="hero-title text-decoration-underline">
-                ABOUT US
-            </h1>
+            <h1 class="hero-title text-decoration-underline animate__animated animate__zoomIn">ABOUT US</h1>
 
             <div class="about-content">
-                <p>FITSPHERE IS <span class="text-highlight">187x77</span>-BASED MOTION DASHBOARD THAT TRACKS STEPS, ORIENTATION AND LOCATION USING BUILT-IN HTML5 APIS.</p>
+
+                <p class="animate__animated animate__fadeInUp animate__delay-1s">
+                    FITSPHERE IS <span class="text-highlight">187x77</span>-BASED MOTION DASHBOARD THAT TRACKS STEPS, ORIENTATION AND LOCATION USING BUILT-IN HTML5 APIS.
+                </p>
                 
-                <p>ACCELEROMETER (DEVICEMOTIONEVENT)<br>
+                <p class="animate__animated animate__fadeInUp animate__delay-2s">
+                   ACCELEROMETER (DEVICEMOTIONEVENT)<br>
                    USED IN: DASHBOARD — <span class="text-highlight">STEPS & MOTION</span><br>
-                   PURPOSE: DETECT MOTION SPIKES AND ESTIMATE STEP COUNT.</p>
+                   PURPOSE: DETECT MOTION SPIKES AND ESTIMATE STEP COUNT.
+                </p>
 
-                <p>MAGNETOMETER / ORIENTATION (DEVICEORIENTATIONEVENT)<br>
+                <p class="animate__animated animate__fadeInUp animate__delay-3s">
+                   MAGNETOMETER / ORIENTATION (DEVICEORIENTATIONEVENT)<br>
                    USED IN: DASHBOARD — <span class="text-highlight">COMPASS</span><br>
-                   PURPOSE: DISPLAY LIVE HEADING USING A ROTATING CANVAS ARROW.</p>
+                   PURPOSE: DISPLAY LIVE HEADING USING A ROTATING CANVAS ARROW.
+                </p>
 
-                <p>GEOLOCATION API (NAVIGATOR.GEOLOCATION)<br>
+                <p class="animate__animated animate__fadeInUp animate__delay-4s">
+                   GEOLOCATION API (NAVIGATOR.GEOLOCATION)<br>
                    USED IN: DASHBOARD — <span class="text-highlight">LOCATION</span><br>
-                   PURPOSE: FETCH GPS COORDINATES</p>
+                   PURPOSE: FETCH GPS COORDINATES
+                </p>
 
-                <p>CANVAS API<br>
+                <p class="animate__animated animate__fadeInUp animate__delay-5s">
+                   CANVAS API<br>
                    USED IN: DASHBOARD — <span class="text-highlight">ACTIVITY CHARTS.</span><br>
-                   PURPOSE: REAL-TIME VISUAL RENDERING (2D).</p>
+                   PURPOSE: REAL-TIME VISUAL RENDERING (2D).
+                </p>
 
-                <p>RESPONSIVE DESIGN (CSS GRID + FLEXBOX)<br>
+                <p class="animate__animated animate__fadeInUp animate__delay-6s">
+                   RESPONSIVE DESIGN (CSS GRID + FLEXBOX)<br>
                    USED IN: <span class="text-highlight">ENTIRE SITE</span><br>
-                   PURPOSE: LAYOUT ADAPTS AUTOMATICALLY ON MOBILE/TABLET/LAPTOP.</p>
+                   PURPOSE: LAYOUT ADAPTS AUTOMATICALLY ON MOBILE/TABLET/LAPTOP.
+                </p>
             </div>
         </div>
     </main>
 
-    <footer class="app-footer py-4">
+    <footer class="app-footer py-4 animate__animated animate__fadeInUp">
         <div class="container-fluid d-flex align-items-center justify-content-between">
- 
-            <div class="footer-slogan text-white mb-0">MOVE SMARTER. LIVE BETTER</div>
-            <nav class="d-flex gap-4">
+
+            <div class="footer-slogan text-white mb-0 animate__animated animate__fadeInLeft">MOVE SMARTER. LIVE BETTER</div>
+
+            <nav class="d-flex gap-4 animate__animated animate__fadeInRight">
                 <a href="dashboard.html" class="nav-link text-white">DASHBOARD</a>
                 <a href="index.html" class="nav-link text-white">HOME</a>
             </nav>
- 
+
         </div>
     </footer>
+
     <script src="./index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
