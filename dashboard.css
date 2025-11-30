@@ -1,3 +1,28 @@
+/* --- HORIZONTAL SCROLL FIXES --- */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Double protection for body */
+body {
+    width: 100%;
+    overflow-x: hidden !important;
+}
+
+/* Ensure all containers respect viewport */
+.container, .container-fluid, .row, .hero-main-container, .hero-main-grid {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Fix images and media */
+img, video, iframe, canvas {
+    max-width: 100%;
+    height: auto;
+}
+
 /* --- GLOBAL STYLES --- */
 .btn-brand-primary,
 .btn-brand-secondary,
@@ -47,6 +72,8 @@
     background-color: #e9ecef;
     padding: 2rem 0;
     margin-bottom: 2rem;
+    width: 100%;
+    max-width: 100vw;
 }
 
 .hero-banner-main {
@@ -63,6 +90,8 @@
 /* --- MAIN CONTENT AREA --- */
 .hero-main-container {
     padding: 0 2rem;
+    width: 100%;
+    max-width: 100%;
 }
 
 .hero-main-grid {
@@ -70,6 +99,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-bottom: 2rem;
+    width: 100%;
 }
 
 .dashboard-box {
@@ -81,6 +111,8 @@
     height: auto;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 100%;
 }
 
 /* Titles */
@@ -116,6 +148,7 @@
     align-items: center;
     justify-content: center;
     height: 100%;
+    width: 100%;
 }
 
 .compass-circle {
@@ -152,6 +185,7 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
+    width: 100%;
 }
 
 #locationCoords {
@@ -170,15 +204,19 @@
 /* Graph */
 .graph-container {
     width: 100%;
+    max-width: 100%;
     height: 35vh;
     min-height: 250px;
     padding: 10px;
+    overflow: hidden;
 }
 
 /* Footer */
 .app-footer {
     background-color: black;
     font-family: 'Bebas Neue', sans-serif;
+    width: 100%;
+    max-width: 100vw;
 }
 
 .footer-slogan {
@@ -232,9 +270,9 @@
 @media (max-width: 768px) {
 
     .hero-main-container {
-    padding: 0 1.5rem;
+        padding: 0 1.5rem;
+        max-width: 100vw;
     }
-
 
     .header-brand {
         font-size: 2rem;
@@ -278,7 +316,8 @@
 @media (max-width: 480px) {
 
     .hero-main-container {
-    padding: 0 1rem;
+        padding: 0 1rem;
+        max-width: 100vw;
     }
 
     .hero-banner-main {
@@ -313,5 +352,20 @@
     .footer-slogan,
     .app-footer nav a {
         font-size: 1.4rem;
+    }
+}
+
+/* Extra protection for very small screens */
+@media (max-width: 360px) {
+    .hero-main-container {
+        padding: 0 0.5rem;
+    }
+    
+    .dashboard-box {
+        padding: 1rem;
+    }
+    
+    .hero-banner-main {
+        font-size: 1.8rem;
     }
 }
