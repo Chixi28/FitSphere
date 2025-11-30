@@ -8,13 +8,21 @@
     box-sizing: border-box;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Keep your existing body styles but enhance them */
 body {
     font-family: 'Bebas Neue', sans-serif;
     width: 100%;
-    overflow-x: hidden !important; /* prevent horizontal scroll */
+    overflow-x: hidden !important;
+    position: relative;
 }
 
-/* Apply Bebas Neue to buttons, header, footer */
+
+/* Apply Bebas Neue to all button-like links */
 .btn-brand-primary,
 .btn-brand-secondary,
 .btn-brand-tertiary,
@@ -68,25 +76,25 @@ body {
 
 .hero-banner {
     width: 100%;
-    min-height: 80vh;
-    padding: 40px 1rem; /* padding inside viewport */
+    height: auto;
+    min-height: 100vh;
     background-image: url("./images/tree-landscape.JPG");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
     align-items: flex-start;
+    justify-content: flex-start;
 }
 
 .hero-title {
     font-size: 6rem;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
     color: white;
     display: inline-block;
-    margin-bottom: 2rem;
-    padding: 0 1rem; /* prevent overflow */
-    word-wrap: break-word;
+    padding: 0 1rem;
+    margin-bottom: 2.5rem;
 }
 
 /* ---------------------------------------------- */
@@ -94,11 +102,11 @@ body {
 /* ---------------------------------------------- */
 
 .about-content {
+    font-family: 'Bebas Neue', sans-serif;
     color: white;
     font-size: 1.8rem;
     line-height: 1.4;
-    max-width: 100%;
-    padding: 0 1rem;
+    max-width: 65%;
 }
 
 .about-content p {
@@ -115,6 +123,7 @@ body {
 
 .app-footer {
     background-color: black;
+    font-family: 'Bebas Neue', sans-serif;
 }
 
 .footer-slogan {
@@ -123,7 +132,6 @@ body {
 
 .app-footer nav a {
     font-size: 2rem;
-    color: white;
     transition: color 0.2s;
 }
 
@@ -138,12 +146,11 @@ body {
 @media (max-width: 992px) {
     .hero-title {
         font-size: 4.5rem;
-        padding: 0 0.5rem;
     }
 
     .about-content {
+        max-width: 80%;
         font-size: 1.6rem;
-        line-height: 1.35;
     }
 
     .btn-brand-primary,
@@ -155,46 +162,28 @@ body {
     .header-brand {
         font-size: 2.2rem;
     }
-
-    .footer-slogan,
-    .app-footer nav a {
-        font-size: 1.6rem;
-    }
 }
 
 /* ---------------------------------------------- */
-/* RESPONSIVE FIXES – PHONES                      */
+/* RESPONSIVE FIXES – ANDROID PHONES              */
 /* ---------------------------------------------- */
 
 @media (max-width: 768px) {
-    .app-header .container-fluid {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-    }
-
-    nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
     .hero-banner {
-        min-height: 60vh;
-        padding: 30px 1rem;
-        align-items: center;
+        padding-top: 3rem;
+        height: auto;
+        min-height: 100vh;
     }
 
     .hero-title {
         font-size: 3.2rem;
-        text-align: center;
         margin-bottom: 1rem;
-        padding: 0 0.5rem;
     }
 
     .about-content {
+        max-width: 100%;
         font-size: 1.4rem;
         line-height: 1.3;
-        text-align: center;
     }
 
     .btn-brand-primary,
@@ -204,10 +193,8 @@ body {
         padding: 0.3rem 0.8rem;
     }
 
-    .footer-slogan,
-    .app-footer nav a {
+    .footer-slogan {
         font-size: 1.4rem;
-        text-align: center;
     }
 }
 
@@ -222,7 +209,6 @@ body {
 
     .hero-title {
         font-size: 2.4rem;
-        padding: 0 0.5rem;
     }
 
     .about-content {
@@ -230,8 +216,11 @@ body {
         line-height: 1.25;
     }
 
-    .footer-slogan,
     .app-footer nav a {
+        font-size: 1.3rem;
+    }
+
+    .footer-slogan {
         font-size: 1.2rem;
     }
 
