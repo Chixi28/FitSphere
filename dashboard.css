@@ -8,9 +8,6 @@
     text-transform: uppercase;
 }
 
-* {
-    max-width: 100%;
-}
 
 /* --- HEADER STYLES --- */
 .app-header {

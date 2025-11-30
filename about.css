@@ -6,12 +6,20 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    max-width: 100%;
 }
+
+/* Prevent children from overflowing by accident */
 
 body {
     font-family: 'Bebas Neue', sans-serif;
-    overflow-x: hidden;
+    width: 100%;
+    overflow-x: hidden !important;
+    position: relative;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    max-width: 100%;
 }
 
 /* Apply Bebas Neue to all button-like links */
