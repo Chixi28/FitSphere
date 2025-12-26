@@ -1,19 +1,16 @@
-// This is the best-practice way to make sure your
-// JavaScript doesn't run until the HTML is fully loaded.
 document.addEventListener('DOMContentLoaded', function() {
-
-    // 1. Find the "GO TO DASHBOARD" button by its class
-    const dashboardButton = document.querySelector('.btn-info');
-
-    // 2. Find the "LEARN MORE" button by its class
+    // 1. Find the "LEARN MORE" button
     const learnMoreButton = document.querySelector('.btn-dark');
-    // 4. Add a "click" event listener to the learn more button
+
+    // 2. Initialize the Bootstrap Modal
+    const myModal = new bootstrap.Modal(document.getElementById('learnMoreModal'));
+
     if (learnMoreButton) {
         learnMoreButton.addEventListener('click', function(event) {
             event.preventDefault(); // Don't follow the '#' link
             
-            // Show a different alert!
-            alert('Thanks for your interest!');
+            // Show the nice Bootstrap modal instead of an alert
+            myModal.show();
         });
     }
 
