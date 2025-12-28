@@ -1,77 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- =====================================================
+         META & DOCUMENT SETUP
+         -----------------------------------------------------
+         Defines character encoding, viewport scaling,
+         and basic document metadata.
+         ===================================================== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FitSphere</title>
 
+    <!-- =====================================================
+         EXTERNAL FONTS
+         -----------------------------------------------------
+         Google Font used consistently across the site
+         for branding and headings.
+         ===================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+    <!-- =====================================================
+         STYLESHEETS
+         -----------------------------------------------------
+         - Bootstrap: layout and utility classes
+         - Animate.css: entry animations
+         - about.css: custom project styling
+         ===================================================== -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="about.css">
 </head>
+
 <body>
 
+    <!-- =====================================================
+         HEADER
+         -----------------------------------------------------
+         Contains site branding and primary navigation.
+         Animated on page load.
+         ===================================================== -->
     <header class="app-header py-4 animate__animated animate__fadeInDown">
         <div class="container-fluid d-flex align-items-center justify-content-between">
-            <div class="header-brand text-white fs-1 mb-0 animate__animated animate__fadeInLeft">FitSphere</div>
+
+            <!-- Brand / Logo -->
+            <div class="header-brand text-white fs-1 mb-0 animate__animated animate__fadeInLeft">
+                FitSphere
+            </div>
+
+            <!-- Primary navigation -->
             <nav class="d-flex gap-4 animate__animated animate__fadeInRight">
                  <a href="dashboard.html" class="btn btn-brand-primary nav-link">DASHBOARD</a>
                  <a href="index.html" class="btn btn-brand-secondary nav-link">HOME</a>
             </nav>
+
         </div>
     </header>
 
+    <!-- =====================================================
+         MAIN CONTENT
+         -----------------------------------------------------
+         Hero-style layout describing the platform,
+         its APIs, and technical features.
+         ===================================================== -->
     <main class="hero-banner hero-banner-main"> 
         <div class="container py-5">
-            <h1 class="hero-title text-decoration-underline animate__animated animate__zoomIn">ABOUT US</h1>
 
+            <!-- Page title -->
+            <h1 class="hero-title text-decoration-underline animate__animated animate__zoomIn">
+                ABOUT US
+            </h1>
+
+            <!-- About / feature explanation content -->
             <div class="about-content">
 
+                <!-- General project description -->
                 <p class="animate__animated animate__fadeInUp animate__delay-1s">
                     FITSPHERE IS <span class="text-highlight">187x77</span>-BASED MOTION DASHBOARD THAT TRACKS STEPS, ORIENTATION AND LOCATION USING BUILT-IN HTML5 APIS.
                 </p>
-                
+
+                <!-- Accelerometer explanation -->
                 <p class="animate__animated animate__fadeInUp animate__delay-2s">
                    ACCELEROMETER (DEVICEMOTIONEVENT)<br>
                    USED IN: DASHBOARD — <span class="text-highlight">STEPS & MOTION</span><br>
                    PURPOSE: DETECT MOTION SPIKES AND ESTIMATE STEP COUNT.
                 </p>
 
+                <!-- Magnetometer / orientation explanation -->
                 <p class="animate__animated animate__fadeInUp animate__delay-3s">
                    MAGNETOMETER / ORIENTATION (DEVICEORIENTATIONEVENT)<br>
                    USED IN: DASHBOARD — <span class="text-highlight">COMPASS</span><br>
                    PURPOSE: DISPLAY LIVE HEADING USING A ROTATING CANVAS ARROW.
                 </p>
 
+                <!-- Geolocation API explanation -->
                 <p class="animate__animated animate__fadeInUp animate__delay-4s">
                    GEOLOCATION API (NAVIGATOR.GEOLOCATION)<br>
                    USED IN: DASHBOARD — <span class="text-highlight">LOCATION</span><br>
                    PURPOSE: FETCH GPS COORDINATES
                 </p>
 
+                <!-- Canvas API explanation -->
                 <p class="animate__animated animate__fadeInUp animate__delay-5s">
                    CANVAS API<br>
                    USED IN: DASHBOARD — <span class="text-highlight">ACTIVITY CHARTS.</span><br>
                    PURPOSE: REAL-TIME VISUAL RENDERING (2D).
                 </p>
 
+                <!-- Responsive design explanation -->
                 <p class="animate__animated animate__fadeInUp">
                    RESPONSIVE DESIGN (CSS GRID + FLEXBOX)<br>
                    USED IN: <span class="text-highlight">ENTIRE SITE</span><br>
                    PURPOSE: LAYOUT ADAPTS AUTOMATICALLY ON MOBILE/TABLET/LAPTOP.
                 </p>
+
             </div>
         </div>
     </main>
 
+    <!-- =====================================================
+         FOOTER
+         -----------------------------------------------------
+         Contains slogan and repeated navigation links.
+         ===================================================== -->
     <footer class="app-footer py-4 animate__animated animate__fadeInUp">
         <div class="container-fluid d-flex align-items-center justify-content-between">
 
-            <div class="footer-slogan text-white mb-0 animate__animated animate__fadeInLeft">MOVE SMARTER. LIVE BETTER</div>
+            <!-- Footer slogan -->
+            <div class="footer-slogan text-white mb-0 animate__animated animate__fadeInLeft">
+                MOVE SMARTER. LIVE BETTER
+            </div>
 
+            <!-- Footer navigation -->
             <nav class="d-flex gap-4 animate__animated animate__fadeInRight">
                 <a href="dashboard.html" class="nav-link text-white">DASHBOARD</a>
                 <a href="index.html" class="nav-link text-white">HOME</a>
@@ -80,7 +141,14 @@
         </div>
     </footer>
 
+    <!-- =====================================================
+         SCRIPTS
+         -----------------------------------------------------
+         - index.js: project-specific logic
+         - Bootstrap bundle: interactive components
+         ===================================================== -->
     <script src="./index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

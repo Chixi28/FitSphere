@@ -1,6 +1,10 @@
-/* ---------------------------------------------- */
-/* GLOBAL DEFAULTS                                */
-/* ---------------------------------------------- */
+/* =========================================================
+   GLOBAL DEFAULTS
+   ---------------------------------------------------------
+   - Reset default browser spacing
+   - Use border-box for predictable sizing
+   - Prevent horizontal overflow globally
+   ========================================================= */
 
 * {
     margin: 0;
@@ -8,12 +12,13 @@
     box-sizing: border-box;
 }
 
+/* Prevent horizontal scrolling on root elements */
 html, body {
     max-width: 100%;
     overflow-x: hidden;
 }
 
-/* Keep your existing body styles but enhance them */
+/* Base typography and layout behavior */
 body {
     font-family: 'Bebas Neue', sans-serif;
     width: 100%;
@@ -21,8 +26,7 @@ body {
     position: relative;
 }
 
-
-/* Apply Bebas Neue to all button-like links */
+/* Shared typography styles for brand-related elements */
 .btn-brand-primary,
 .btn-brand-secondary,
 .btn-brand-tertiary,
@@ -32,18 +36,23 @@ body {
     text-transform: uppercase;
 }
 
-/* ---------------------------------------------- */
-/* HEADER                                         */
-/* ---------------------------------------------- */
+
+/* =========================================================
+   HEADER
+   ---------------------------------------------------------
+   Application header styling and brand buttons
+   ========================================================= */
 
 .app-header {
     background-color: #2596BE;
 }
 
+/* Main brand/logo text */
 .header-brand {
     font-size: 3rem;
 }
 
+/* Base styles for all brand buttons */
 .btn-brand-primary,
 .btn-brand-secondary,
 .btn-brand-tertiary {
@@ -54,25 +63,30 @@ body {
     transition: background-color 0.2s, border-color 0.2s;
 }
 
-/* Button hover styles */
+/* Primary button hover state */
 .btn-brand-primary:hover {
     background-color: #2085A7;
     border-color: #2085A7;
 }
 
+/* Secondary button hover state */
 .btn-brand-secondary:hover {
     background-color: transparent;
     border-color: white;
 }
 
+/* Tertiary button hover state */
 .btn-brand-tertiary:hover {
     background-color: #197893;
     border-color: #197893;
 }
 
-/* ---------------------------------------------- */
-/* HERO                                           */
-/* ---------------------------------------------- */
+
+/* =========================================================
+   HERO SECTION
+   ---------------------------------------------------------
+   Full-screen hero banner with background image
+   ========================================================= */
 
 .hero-banner {
     width: 100%;
@@ -87,6 +101,7 @@ body {
     justify-content: flex-start;
 }
 
+/* Main hero heading */
 .hero-title {
     font-size: 6rem;
     font-family: 'Bebas Neue', sans-serif;
@@ -97,9 +112,12 @@ body {
     margin-bottom: 2.5rem;
 }
 
-/* ---------------------------------------------- */
-/* ABOUT CONTENT                                  */
-/* ---------------------------------------------- */
+
+/* =========================================================
+   ABOUT CONTENT
+   ---------------------------------------------------------
+   Text content section inside the hero/banner area
+   ========================================================= */
 
 .about-content {
     font-family: 'Bebas Neue', sans-serif;
@@ -109,42 +127,56 @@ body {
     max-width: 65%;
 }
 
+/* Spacing between paragraphs */
 .about-content p {
     margin-bottom: 1.5rem;
 }
 
-.about-content p:nth-child(6) { animation-delay: 6s; }
+/* Delayed animation for the 6th paragraph (if animations exist) */
+.about-content p:nth-child(6) {
+    animation-delay: 6s;
+}
 
+/* Highlighted text inside about content */
 .about-content .text-highlight {
     color: white;
 }
 
-/* ---------------------------------------------- */
-/* FOOTER                                         */
-/* ---------------------------------------------- */
+
+/* =========================================================
+   FOOTER
+   ---------------------------------------------------------
+   Footer layout, branding, and navigation links
+   ========================================================= */
 
 .app-footer {
     background-color: black;
     font-family: 'Bebas Neue', sans-serif;
 }
 
+/* Footer slogan text */
 .footer-slogan {
     font-size: 2rem;
 }
 
+/* Footer navigation links */
 .app-footer nav a {
     font-size: 2rem;
     transition: color 0.2s;
 }
 
+/* Hover effect for footer links */
 .app-footer nav a:hover {
     color: #2596BE !important;
 }
 
-/* ---------------------------------------------- */
-/* RESPONSIVE FIXES – TABLETS / SMALL LAPTOPS     */
-/* ---------------------------------------------- */
 
+/* =========================================================
+   RESPONSIVE STYLES
+   ========================================================= */
+
+
+/* Tablets / Small laptops */
 @media (max-width: 992px) {
     .hero-title {
         font-size: 4.5rem;
@@ -166,10 +198,8 @@ body {
     }
 }
 
-/* ---------------------------------------------- */
-/* RESPONSIVE FIXES – ANDROID PHONES              */
-/* ---------------------------------------------- */
 
+/* Android phones / small tablets */
 @media (max-width: 768px) {
     .hero-banner {
         padding-top: 3rem;
@@ -200,10 +230,8 @@ body {
     }
 }
 
-/* ---------------------------------------------- */
-/* RESPONSIVE FIXES – SMALL PHONES                */
-/* ---------------------------------------------- */
 
+/* Small phones */
 @media (max-width: 480px) {
     .header-brand {
         font-size: 1.8rem;
@@ -226,6 +254,7 @@ body {
         font-size: 1.2rem;
     }
 
+    /* Reduce navigation gap for very small screens */
     nav.d-flex.gap-4 {
         gap: 1rem !important;
     }
