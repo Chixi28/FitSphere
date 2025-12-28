@@ -1,33 +1,58 @@
-// =====================
-// STEP COUNTER SETTINGS
-// =====================
+/**
+ * ============================================
+ * FitSphere Dashboard Logic
+ * --------------------------------------------
+ * Handles:
+ * - Step counting via DeviceMotion API
+ * - Compass heading via DeviceOrientation API
+ * - Live geolocation tracking
+ * - Real-time step visualization using Chart.js
+ *
+ * Fallbacks:
+ * - Sensor simulation for unsupported devices
+ * - Permission handling for iOS / Android
+ * ============================================
+ */
+
+// Current step count for the active minute
 let stepCount = 0;
+
+// Last measured acceleration magnitude
 let lastAcc = 0;
+
+// Timestamp of last detected step (ms)
 let lastStepTime = 0;
+
+// Acceleration threshold used to detect steps
 const STEP_THRESHOLD = 12;
+
+// Minimum time between steps (debounce)
 const STEP_COOLDOWN = 300;
 
-// Step chart data
+// Chart data storage
 let stepData = [];
 let stepLabels = [];
+
+// Used to detect minute changes for chart updates
 let lastChartMinute = new Date().getMinutes();
 
-// =====================
-// COMPASS ELEMENTS
-// =====================
+
+// Rotating compass needle element
 const needle = document.querySelector(".compass-needle");
+
+// Numeric heading display
 const degreeEl = document.querySelector(".compass-degree");
 
-// =====================
-// LOCATION ELEMENTS
-// =====================
+// Latitude / longitude display
 const coordsEl = document.getElementById("locationCoords");
+
+// Location label text
 const labelEl = document.getElementById("locationLabel");
 
-// =====================
-// CREATE STEP CHART
-// =====================
+// Canvas context for Chart.js
 const ctx = document.getElementById("stepsChart");
+
+// Bar chart showing steps per minute
 let stepsChart = new Chart(ctx, {
     type: "bar",
     data: {
@@ -49,7 +74,12 @@ let stepsChart = new Chart(ctx, {
     }
 });
 
-// Adds one entry every minute
+
+/**
+ * Updates the step chart once per minute.
+ * Stores the step count for the completed minute,
+ * then resets the counter for the next interval.
+ */
 function updateStepsChart() {
     const now = new Date();
     const minute = now.getMinutes();
@@ -62,15 +92,15 @@ function updateStepsChart() {
         stepsChart.data.datasets[0].data = stepData;
         stepsChart.update();
 
-        // reset minute tracker
         lastChartMinute = minute;
-        stepCount = 0; // reset steps for next minute
+        stepCount = 0;
     }
 }
 
-// =====================
-// COMPASS
-// =====================
+/**
+ * Starts the live compass using the DeviceOrientation API.
+ * Rotates the needle based on the alpha (heading) value.
+ */
 function startCompass() {
     window.addEventListener("deviceorientation", (event) => {
         let alpha = event.alpha;
@@ -81,6 +111,11 @@ function startCompass() {
     });
 }
 
+
+/**
+ * Simulated compass for desktop or unsupported devices.
+ * Rotates the needle automatically at fixed intervals.
+ */
 function simulateCompass() {
     let angle = 0;
     setInterval(() => {
@@ -90,13 +125,19 @@ function simulateCompass() {
     }, 500);
 }
 
-// =====================
-// STEP COUNTER
-// =====================
+/**
+ * Starts the step counter.
+ * Uses real motion sensors if available,
+ * otherwise falls back to simulated data.
+ *
+ * @param {boolean} simulated - Whether to use simulated steps
+ */
 function startStepCounter(simulated = false) {
     const btn = document.getElementById("enableMotion");
     btn.disabled = true;
-    btn.textContent = simulated ? "Simulated Step Counter Enabled" : "Step Counter Enabled";
+    btn.textContent = simulated
+        ? "Simulated Step Counter Enabled"
+        : "Step Counter Enabled";
 
     if (simulated) {
         setInterval(() => {
@@ -114,10 +155,11 @@ function startStepCounter(simulated = false) {
         const totalAcc = Math.sqrt(acc.x ** 2 + acc.y ** 2 + acc.z ** 2);
         const now = Date.now();
 
-        if (totalAcc > STEP_THRESHOLD &&
+        if (
+            totalAcc > STEP_THRESHOLD &&
             lastAcc <= STEP_THRESHOLD &&
-            now - lastStepTime > STEP_COOLDOWN) {
-
+            now - lastStepTime > STEP_COOLDOWN
+        ) {
             stepCount++;
             lastStepTime = now;
             document.getElementById("stepCount").textContent = stepCount;
@@ -128,9 +170,10 @@ function startStepCounter(simulated = false) {
     });
 }
 
-// =====================
-// LOCATION
-// =====================
+/**
+ * Starts continuous geolocation tracking using
+ * the HTML5 Geolocation API.
+ */
 function startLocation() {
     if (!navigator.geolocation) {
         coordsEl.textContent = "Geolocation not supported.";
@@ -144,7 +187,7 @@ function startLocation() {
             coordsEl.textContent = `${latitude.toFixed(5)}°, ${longitude.toFixed(5)}°`;
             labelEl.textContent = "Your Location";
         },
-        (error) => {
+        () => {
             coordsEl.textContent = "Location denied.";
             labelEl.textContent = "-";
         },
@@ -156,15 +199,20 @@ function startLocation() {
     );
 }
 
-// =====================
-// ENABLE BUTTON
-// =====================
+/**
+ * Handles permission requests and sensor initialization.
+ * Automatically detects:
+ * - iOS permission model
+ * - Android support
+ * - Desktop fallback simulation
+ */
 document.getElementById("enableMotion").addEventListener("click", async () => {
 
-    // iOS motion permission
-    if (typeof DeviceMotionEvent !== "undefined" &&
-        typeof DeviceMotionEvent.requestPermission === "function") {
-
+    // iOS motion permission handling
+    if (
+        typeof DeviceMotionEvent !== "undefined" &&
+        typeof DeviceMotionEvent.requestPermission === "function"
+    ) {
         try {
             const response = await DeviceMotionEvent.requestPermission();
             if (response === "granted") {
@@ -184,7 +232,7 @@ document.getElementById("enableMotion").addEventListener("click", async () => {
         }
     }
 
-    // Android
+    // Android devices
     if ("DeviceMotionEvent" in window) {
         startStepCounter();
         startCompass();
@@ -192,7 +240,7 @@ document.getElementById("enableMotion").addEventListener("click", async () => {
         return;
     }
 
-    // Desktop
+    // Desktop fallback
     alert("No sensors detected. Using simulation.");
     startStepCounter(true);
     simulateCompass();

@@ -1,4 +1,25 @@
-/* --- GLOBAL STYLES --- */
+/**
+ * ============================================
+ * FitSphere — Global Stylesheet
+ * --------------------------------------------
+ * Purpose:
+ * - Defines global branding styles
+ * - Layout styling for header, hero sections, footer
+ * - Responsive behavior for tablets and phones
+ *
+ * Technologies:
+ * - CSS3
+ * - Flexbox
+ * - Media Queries
+ * ============================================
+ */
+
+
+/* =====================
+   GLOBAL BRAND STYLES
+   ===================== */
+
+/* Brand typography used across headers, buttons, and footer */
 .btn-brand-primary,
 .btn-brand-secondary,
 .btn-brand-tertiary,
@@ -8,71 +29,92 @@
     text-transform: uppercase;
 }
 
-/* --- HEADER STYLES --- */
+
+/* =====================
+   HEADER STYLES
+   ===================== */
+
+/* Main application header */
 .app-header {
     background-color: #2596BE;
 }
 
+/* Brand title in header */
 .header-brand {
     font-size: 3rem;
 }
 
-/* Nav buttons */
+
+/* =====================
+   NAVIGATION BUTTONS
+   ===================== */
+
+/* Shared button appearance for navigation */
 .btn-brand-primary,
 .btn-brand-secondary,
 .btn-brand-tertiary {
     font-size: 2rem;
     color: white !important;
-    background-color: transparent; 
+    background-color: transparent;
     border: 2px solid transparent;
-    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out,
+                border-color 0.2s ease-in-out;
 }
 
-/* Hover effects */
+/* Primary button hover behavior */
 .btn-brand-primary:hover {
     background-color: #2085A7;
     border-color: #2085A7;
 }
 
+/* Secondary button hover behavior */
 .btn-brand-secondary:hover {
     border-color: white;
 }
 
+/* Tertiary button hover behavior */
 .btn-brand-tertiary:hover {
     background-color: #197893;
     border-color: #197893;
 }
 
-/* --- HERO SECTION --- */
+
+/* =====================
+   HERO SECTIONS
+   ===================== */
+
+/* Shared hero banner layout */
 .hero-banner {
     width: 100%;
-    min-height: 80vh;   /* changed from fixed height */
+    min-height: 80vh;          /* Uses minimum height for responsiveness */
     padding: 40px 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-/* Background images */
+/* Main hero background */
 .hero-banner-main {
     background-image: url('./images/Marathon-racing.JPG');
 }
 
+/* Secondary hero background */
 .hero-banner-secondary {
     background-image: url('./images/couple-jogging.JPG');
 }
 
-/* Titles */
+/* Hero title styling */
 .hero-title {
     font-size: 4rem;
     font-weight: bold;
 }
 
+/* Hero subtitle text */
 .hero-subtitle {
     font-size: 1.5rem;
 }
 
-/* Buttons */
+/* Hero action buttons */
 .hero-actions a {
     color: white;
     font-weight: bold;
@@ -81,36 +123,51 @@
     text-transform: uppercase;
 }
 
-/* Secondary section paragraph */
+/* Paragraph text inside secondary hero */
 .hero-banner-secondary p {
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-/* --- FOOTER --- */
+
+/* =====================
+   FOOTER
+   ===================== */
+
+/* Footer container */
 .app-footer {
     background-color: black;
     font-family: 'Bebas Neue', sans-serif;
 }
 
+/* Footer slogan text */
 .footer-slogan {
     font-size: 2rem;
 }
 
+/* Footer navigation links */
 .app-footer nav a {
     font-size: 2rem;
     transition: color 0.2s ease-in-out;
 }
 
+/* Footer link hover effect */
 .app-footer nav a:hover {
     color: #2596BE !important;
 }
 
+
 /* ============================================
-   RESPONSIVE FIXES — THIS IS WHAT YOU NEEDED
+   RESPONSIVE DESIGN
+   --------------------------------------------
+   Breakpoints:
+   - Tablets & large phones (≤ 992px)
+   - Phones (≤ 768px)
+   - Small phones (≤ 480px)
    ============================================ */
 
-/* Tablets and large phones (<= 992px) */
+
+/* Tablets and large phones */
 @media (max-width: 992px) {
 
     .header-brand {
@@ -139,7 +196,8 @@
     }
 }
 
-/* Phones (<= 768px) */
+
+/* Standard phones */
 @media (max-width: 768px) {
 
     .app-header .container-fluid {
@@ -193,7 +251,8 @@
     }
 }
 
-/* Small phones (<= 480px) */
+
+/* Small phones */
 @media (max-width: 480px) {
 
     .header-brand {
