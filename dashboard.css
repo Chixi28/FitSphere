@@ -1,3 +1,9 @@
+/* =========================================================
+   ROOT & GLOBAL OVERFLOW CONTROL
+   ---------------------------------------------------------
+   Enforces full-width layout, consistent box sizing,
+   and aggressively prevents horizontal scrolling.
+   ========================================================= */
 
 html, body {
     margin: 0;
@@ -9,22 +15,36 @@ html, body {
     position: relative;
 }
 
+/* Inherit box-sizing for all elements and pseudo-elements */
 *, *::before, *::after {
     box-sizing: inherit;
 }
 
-/* AGGRESSIVE OVERFLOW PROTECTION */
+
+/* =========================================================
+   AGGRESSIVE OVERFLOW PROTECTION
+   ---------------------------------------------------------
+   Ensures no child element can exceed viewport width.
+   ========================================================= */
+
 body * {
     max-width: 100%;
 }
 
+/* Media elements constrained to container width */
 img, video, canvas, svg {
     max-width: 100%;
     height: auto;
     display: block;
 }
 
-/* Fix Bootstrap container-fluid */
+
+/* =========================================================
+   BOOTSTRAP CONTAINER FIX
+   ---------------------------------------------------------
+   Prevents container-fluid from causing horizontal overflow.
+   ========================================================= */
+
 .container-fluid {
     width: 100%;
     max-width: 100vw;
@@ -34,7 +54,13 @@ img, video, canvas, svg {
     margin-left: auto;
 }
 
-/* Fonts & buttons */
+
+/* =========================================================
+   TYPOGRAPHY & BRANDING
+   ---------------------------------------------------------
+   Shared font and uppercase styling for brand elements.
+   ========================================================= */
+
 .btn-brand-primary,
 .btn-brand-secondary,
 .btn-brand-tertiary,
@@ -45,6 +71,12 @@ img, video, canvas, svg {
 }
 
 
+/* =========================================================
+   HEADER
+   ---------------------------------------------------------
+   Top navigation bar styling.
+   ========================================================= */
+
 .app-header {
     background-color: #2596BE;
     width: 100%;
@@ -52,10 +84,12 @@ img, video, canvas, svg {
     overflow: hidden;
 }
 
+/* Brand / logo text */
 .header-brand {
     font-size: 3rem;
 }
 
+/* Brand buttons base styling */
 .btn-brand-primary,
 .btn-brand-secondary,
 .btn-brand-tertiary {
@@ -67,17 +101,27 @@ img, video, canvas, svg {
     white-space: nowrap; 
 }
 
+/* Button hover states */
 .btn-brand-primary:hover {
     background-color: #2085A7;
     border-color: #2085A7;
 }
+
 .btn-brand-secondary:hover {
     border-color: white;
 }
+
 .btn-brand-tertiary:hover {
     background-color: #197893; 
     border-color: #197893;
 }
+
+
+/* =========================================================
+   HERO / DASHBOARD TITLE AREA
+   ---------------------------------------------------------
+   Page title and subtitle container.
+   ========================================================= */
 
 .hero-title-container {
     font-family: 'Bebas Neue', sans-serif;
@@ -89,6 +133,7 @@ img, video, canvas, svg {
     overflow: hidden;
 }
 
+/* Main hero heading */
 .hero-banner-main {
     font-size: 4rem;
     color: #333;
@@ -97,12 +142,20 @@ img, video, canvas, svg {
     overflow-wrap: break-word;
 }
 
+/* Secondary hero subtitle */
 .hero-banner-secondary {
     font-size: 1.5rem;
     color: #666;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
+
+
+/* =========================================================
+   DASHBOARD LAYOUT
+   ---------------------------------------------------------
+   Grid-based layout for dashboard widgets.
+   ========================================================= */
 
 .hero-main-container {
     width: 100%;
@@ -120,6 +173,7 @@ img, video, canvas, svg {
     overflow: hidden;
 }
 
+/* Individual dashboard card */
 .dashboard-box {
     background-color: white;
     border-radius: 10px;
@@ -133,7 +187,11 @@ img, video, canvas, svg {
     overflow: hidden;
 }
 
-/* Titles */
+
+/* =========================================================
+   DASHBOARD TITLES
+   ========================================================= */
+
 .box-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 2rem;
@@ -144,7 +202,11 @@ img, video, canvas, svg {
     word-wrap: break-word;
 }
 
-/* Steps counter */
+
+/* =========================================================
+   STEPS COUNTER
+   ========================================================= */
+
 #stepCount {
     font-size: 5rem;
     font-weight: bold;
@@ -155,7 +217,11 @@ img, video, canvas, svg {
     overflow: hidden;
 }
 
-/* Compass */
+
+/* =========================================================
+   COMPASS & LOCATION MODULES
+   ========================================================= */
+
 .compass-container,
 .location-container {
     display: flex;
@@ -166,6 +232,7 @@ img, video, canvas, svg {
     overflow: hidden;
 }
 
+/* Compass outer ring */
 .compass-circle {
     width: 180px;
     height: 180px;
@@ -180,6 +247,7 @@ img, video, canvas, svg {
     overflow: hidden;
 }
 
+/* Compass needle */
 .compass-needle {
     width: 4px;
     height: 80px;
@@ -190,6 +258,7 @@ img, video, canvas, svg {
     transition: transform 0.2s ease-out;
 }
 
+/* Compass heading text */
 .compass-degree {
     font-size: 2rem;
     font-weight: bold;
@@ -197,7 +266,11 @@ img, video, canvas, svg {
     word-wrap: break-word;
 }
 
-/* Location */
+
+/* =========================================================
+   LOCATION DISPLAY
+   ========================================================= */
+
 #locationCoords {
     font-size: 1.8rem;
     font-weight: bold;
@@ -206,6 +279,7 @@ img, video, canvas, svg {
     word-wrap: break-word;
     overflow: hidden;
 }
+
 #locationLabel {
     font-size: 1.5rem;
     text-align: center;
@@ -214,7 +288,11 @@ img, video, canvas, svg {
     overflow: hidden;
 }
 
-/* Graph */
+
+/* =========================================================
+   GRAPH / CHART
+   ========================================================= */
+
 .graph-container {
     width: 100%;
     max-width: 100%;
@@ -230,7 +308,11 @@ img, video, canvas, svg {
     height: 100% !important;
 }
 
-/* Footer */
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
 .app-footer {
     background-color: black;
     width: 100%;
@@ -249,168 +331,38 @@ img, video, canvas, svg {
     transition: color 0.2s ease-in-out;
     white-space: nowrap;
 }
+
 .app-footer nav a:hover {
     color: #2596BE !important;
 }
 
-/* Tablets + small laptops */
+
+/* =========================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================= */
+
+/* Tablets & small laptops */
 @media (max-width: 992px) {
-    .hero-main-grid {
-        grid-template-columns: 1fr;
-    }
-    .hero-banner-main { 
-        font-size: 3rem; 
-        padding: 0 1rem;
-    }
-    .hero-banner-secondary { 
-        font-size: 1.2rem; 
-        padding: 0 1rem;
-    }
+    .hero-main-grid { grid-template-columns: 1fr; }
+    .hero-banner-main { font-size: 3rem; padding: 0 1rem; }
+    .hero-banner-secondary { font-size: 1.2rem; padding: 0 1rem; }
     .btn-brand-primary,
     .btn-brand-secondary,
-    .btn-brand-tertiary { 
-        font-size: 1.6rem; 
-    }
-    .header-brand { 
-        font-size: 2.5rem; 
-    }
-    #stepCount { 
-        font-size: 4rem; 
-    }
+    .btn-brand-tertiary { font-size: 1.6rem; }
+    .header-brand { font-size: 2.5rem; }
+    #stepCount { font-size: 4rem; }
 }
+
 
 /* Phones */
 @media (max-width: 768px) {
-    .hero-main-container { 
-        padding: 0 1.5rem; 
-        max-width: 100vw; 
-    }
-    .header-brand { 
-        font-size: 2rem; 
-    }
+    .hero-main-container { padding: 0 1.5rem; max-width: 100vw; }
+    .header-brand { font-size: 2rem; }
     .btn-brand-primary,
     .btn-brand-secondary,
-    .btn-brand-tertiary { 
-        font-size: 1.4rem; 
-        padding: 0.3rem 0.8rem; 
+    .btn-brand-tertiary {
+        font-size: 1.4rem;
+        padding: 0.3rem 0.8rem;
     }
-    .hero-banner-main { 
-        font-size: 2.5rem; 
-        padding: 0 0.5rem;
-    }
-    .hero-banner-secondary { 
-        font-size: 1rem; 
-        padding: 0 0.5rem;
-    }
-    .dashboard-box { 
-        padding: 1.5rem; 
-        min-height: 250px; 
-    }
-    .compass-circle { 
-        width: 100px; 
-        height: 100px; 
-    }
-    .compass-needle { 
-        height: 40px; 
-    }
-    .graph-container { 
-        height: 30vh; 
-        min-height: 200px; 
-    }
-    
-    /* Stack footer on mobile */
-    .app-footer .container-fluid {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
-    }
-}
-
-/* Small phones */
-@media (max-width: 480px) {
-    .hero-main-container { 
-        padding: 0 1rem; 
-        max-width: 100vw; 
-    }
-    .hero-banner-main { 
-        font-size: 2.2rem; 
-        padding: 0 0.5rem;
-    }
-    .hero-banner-secondary { 
-        font-size: 1rem; 
-        padding: 0 0.5rem;
-    }
-    #stepCount { 
-        font-size: 3.5rem; 
-    }
-    #locationCoords { 
-        font-size: 1.4rem; 
-    }
-    #locationLabel { 
-        font-size: 1.1rem; 
-    }
-    .compass-circle { 
-        width: 80px; 
-        height: 80px; 
-    }
-    .compass-needle { 
-        height: 30px; 
-    }
-    .compass-degree { 
-        font-size: 1.5rem; 
-    }
-    .footer-slogan,
-    .app-footer nav a { 
-        font-size: 1.4rem; 
-    }
-    
-    /* Stack header nav on very small screens */
-    .app-header .container-fluid {
-        flex-direction: column;
-        gap: 1rem;
-    }
-}
-
-/* Very small screens (<360px) */
-@media (max-width: 360px) {
-    .hero-main-container { 
-        padding: 0 0.5rem; 
-    }
-    .dashboard-box { 
-        padding: 1rem; 
-    }
-    .hero-banner-main { 
-        font-size: 1.8rem; 
-    }
-    .hero-banner-secondary {
-        font-size: 0.9rem;
-    }
-    
-    /* Single column header */
-    .app-header .container-fluid {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .app-header nav {
-        justify-content: center !important;
-    }
-}
-
-/* NUCLEAR OPTION - If still having issues */
-@media (max-width: 768px) {
-    body {
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    /* Force no horizontal scroll */
-    .row {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-    
-    .col, [class*="col-"] {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-    }
+    .hero-banner-main { font-size: 2.5rem; padding: 0 0.5rem; }
 }
